@@ -1,0 +1,22 @@
+{
+  "name": "precourseauto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "phantomtests.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JEngdahl/PrecourseAuto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JEngdahl/PrecourseAuto/issues"
+  },
+  "homepage": "https://github.com/JEngdahl/PrecourseAuto#readme",
+  "dependencies": {
+    "sql": "^0.78.0"
+  }
+}
