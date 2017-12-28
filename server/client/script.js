@@ -1,7 +1,7 @@
 var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://localhost:1337/addclass",
+  "url": "http://localhost:1337/api/addclass",
   "method": "POST",
   "headers": {
     "Content-Type": "application/json",
