@@ -17,25 +17,45 @@ casper.on('remote.message', function(message) {
 casper
 .start()
 .then(function(){
+this.echo("start")
   this.each(tempData, function(self, item){
-    self.thenOpen('http://localhost:9000/SSP7/'+item.GithubName+'/javascript-koans/KoansRunner.html', function(){
+	this.echo(item)
+    if(item.Class === "SSP8"){
+      item.Class = "SSP7"
+    }
+    self.thenOpen('http://localhost:9000/'+item.Class+'/'+item.GithubName+'/javascript-koans/KoansRunner.html', function(){
       var passedTests = this.evaluate(function(){
         return document.querySelector("body > div > div.progress > span:nth-child(1) > div > div > div.completion > div:nth-child(2) > span.value").textContent.split("/")[0];
       });
-      item.Koans = passedTests;
+      item.Koans = passedTests || 0;
       this.echo('Koans: ' + item.FullName +", Passed = "+passedTests+"/55")
     })
   })
 })
 .then(function(){
   this.each(tempData, function(self, item){
-    self.thenOpen('http://localhost:9000/SSP7/'+item.GithubName+'/underbar/SpecRunner.html', function(){
+    if(item.Class === "SSP8"){
+      item.Class = "SSP7"
+    }
+   self.thenOpen('http://localhost:9000/'+item.Class+'/'+item.GithubName+'/underbar/SpecRunner.html', function(){
       var passedTests = this.evaluate(function(){
         return document.querySelector("#mocha-stats > li.passes > em").textContent;
       });
-      item.UnderbarOne = passedTests;
+      item.UnderbarOne = passedTests || 0;
       this.echo('Underbar 1 & 2: ' + item.FullName +", Passed = "+passedTests+"/141")
     })
+  })
+})
+.then(function(){
+  this.each(tempData, function(self, item){
+      self.thenOpen('http://localhost:9000/'+item.Class+'/'+item.GithubName+'/recursion/SpecRunner.html', function(){
+        var passedTests = this.evaluate(function(){
+          return document.querySelector("#mocha-stats > li.passes > em").textContent;
+        });
+
+        item.Recursion = passedTests;
+        this.echo('Recursion: ' + item.FullName +", Passed = "+passedTests+"/4")
+      })
   })
 })
 .then(function(){

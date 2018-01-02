@@ -57,5 +57,15 @@ typings/
 # dotenv environment variables file
 .env
 
+#ClassContainer folder
+/ClassContainer
+
+#miscshit
+data.js
+gradedata.js
+runtimes.txt
+test.sh
+testing.txt
+
 # keys
 keys.js

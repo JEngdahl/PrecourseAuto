@@ -5,7 +5,7 @@
   "main": "phantomtests.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nod server/server.js"
+    "start": "node server/server.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/JEngdahl/PrecourseAuto#readme",
   "dependencies": {
+    "express": "^4.16.2",
+    "mysql": "^2.15.0",
     "sql": "^0.78.0"
   }
 }
