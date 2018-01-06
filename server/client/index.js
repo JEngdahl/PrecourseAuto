@@ -29,6 +29,7 @@ $(document).on('click','#listCohorts li',function(){
    "method": "GET",
    "headers": {
      "Content-Type": "application/json",
+   }
   }
   $.ajax(settings).done(function(r){
     console.log(r)
