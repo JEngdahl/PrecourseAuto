@@ -3,6 +3,9 @@ body {
 }
 ul {
   padding-left: 7px;
+  height: 100vh;
+  overflow: scroll;
+  margin-top:  0;
 }
 li {
   padding-top: 5px;
@@ -22,10 +25,6 @@ li:hover {
 #myChart {
   width: 75vw;
 }
-/*#chart-container{
-  width: 400px;
-  height: 400px;
-}*/
 #classes{
   text-align: center;
   font-family: 'Source Sans Pro', sans-serif;
