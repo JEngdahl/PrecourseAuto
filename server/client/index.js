@@ -25,7 +25,7 @@ $(document).on('click','#listCohorts li',function(){
   var settings = {
    "async": true,
    "crossDomain": true,
-   "url": "http://34.207.251.58:3000/api/class"+clicked,
+   "url": "http://34.207.251.58:3000/api/class?c="+clicked,
    "method": "GET",
    "headers": {
      "Content-Type": "application/json",
