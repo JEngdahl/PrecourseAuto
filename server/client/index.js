@@ -35,6 +35,7 @@ $(document).on('click','#listCohorts li',function(){
   $.ajax(settings).done(function(r){
     console.log(r)
     r.forEach(function(el){
+      $("#cContainer").append("hi")
       $("#cContainer").append("<li>"+el.FullName+" Koans:"+el.Koans+" Recursion:"+el.Recursion+" Underbar:"+el.UnderbarOne+"</li>")
     })
   })
