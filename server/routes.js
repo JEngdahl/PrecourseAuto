@@ -49,20 +49,18 @@ module.exports = function(app,db) {
 
 
   app.post('/api/addclass',function(req, res){
-    console.log(req.body)
+    //console.log(req.body)
     var r = req.body
-    if(r.handles.length < 1){
-      res.send("no data")
-    }
-    if(!r.class){
-      res.send("no class field")
-    }
-    if(r.handles.length !== r.names.length){
-      res.send("not the same length")
-    }
     r.names.forEach(function(e,i){
-      db.query("INSERT INTO precourse.Students (`FullName`,`GithubName`,`Class`) VALUES ('"+e+"','"+r.handles[i]+"','"+r.class+"');")
-    })
+      console.log(e)
+      db
+      .query("INSERT INTO precourse.Students (`FullName`,`GithubName`,`Class`) VALUES ('"+e+"','"+r.handles[i]+"','"+r.class+"');",function(){
+        if(i === r.names.length - 1){
+	  res.send("done")
+	}
+      })
+	
+       })
   })
 
   app.post('/api/updatebyhandle', function(req, res){
