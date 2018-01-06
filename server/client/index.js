@@ -14,7 +14,7 @@ $.ajax(settings).done(function (response) {
   console.log(response);
   var splitResponse = response.split(" ");
   splitResponse.forEach(function(e){
-   $("#classList").append("<li>"+e+"</li>")
+   $("#listCohorts").append("<li>"+e+"</li>")
   })
 });
  console.log("yas")
