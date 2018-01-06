@@ -21,7 +21,7 @@ $.ajax(settings).done(function (response) {
 })
 
 $(document).on('click','#listCohorts li',function(){
-  $("body").text("")
+  $("#cContainer").text("")
   var clicked = this.innerText
   var settings = {
    "async": true,
@@ -35,7 +35,7 @@ $(document).on('click','#listCohorts li',function(){
   $.ajax(settings).done(function(r){
     console.log(r)
     r.forEach(function(el){
-      $("body").append("<div>"+el.FullName+" Koans:"+el.Koans+" Recursion:"+el.Recursion+" Underbar:"+el.UnderbarOne+"</div>")
+      $("cContainer").append("<div>"+el.FullName+" Koans:"+el.Koans+" Recursion:"+el.Recursion+" Underbar:"+el.UnderbarOne+"</div>")
     })
   })
 })
