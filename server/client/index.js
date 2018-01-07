@@ -35,11 +35,11 @@ $(document).on('click','#listCohorts li',function(){
   $.ajax(settings).done(function(r){
     console.log(r)
     r.sort(function(a,b){
-      if(a.Koans > b.Koans){
-        return 1
-      }
-      if(a.Koans < b.Koans){
+      if(a.UnderbarOne > b.UnderbarOne){
         return -1
+      }
+      if(a.UnderbarOne < b.UnderbarOne){
+        return 1
       }
       return 0
     })
