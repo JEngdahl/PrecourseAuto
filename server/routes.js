@@ -42,8 +42,9 @@ module.exports = function(app,db) {
         if(err){
           res.send(err)
         }
-        res.send(resp)
+          res.send(resp)
       })
+      .then(function(data){console.log(data)})
     }
   })
 
@@ -59,7 +60,7 @@ module.exports = function(app,db) {
 	  res.send("done")
 	}
       })
-	
+
        })
   })
 
