@@ -35,7 +35,7 @@ $(document).on('click','#listCohorts li',function(){
   $.ajax(settings).done(function(r){
     console.log(r)
     r.forEach(function(el){
-      $("#cContainer").append("<li>"+el.FullName+" Koans:<div class='"+KoansColor+"'>"+el.Koans+"</div> Recursion:<div class='"+RecursionColor+"'>"+el.Recursion+"</div> Underbar:<div class='"+UnderbarColor+"'>"+el.UnderbarOne+"</div></li>")
+      $("#cContainer").append("<li>"+el.FullName+" Koans:<div class='"+el.KoansColor+"'>"+el.Koans+"</div> Recursion:<div class='"+el.RecursionColor+"'>"+el.Recursion+"</div> Underbar:<div class='"+el.UnderbarColor+"'>"+el.UnderbarOne+"</div></li>")
     })
   })
 })
