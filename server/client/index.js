@@ -34,6 +34,15 @@ $(document).on('click','#listCohorts li',function(){
   }
   $.ajax(settings).done(function(r){
     console.log(r)
+    r.sort(function(a,b){
+      if(a.Koans > b.Koans){
+        return 1
+      }
+      if(a.Koans < b.Koans){
+        return -1
+      }
+      return 0
+    })
     r.forEach(function(el){
       $("#cContainer").append("<li>"+el.FullName+" Koans:<div class='"+el.KoansColor+"'>"+el.Koans+"</div> Recursion:<div class='"+el.RecursionColor+"'>"+el.Recursion+"</div> Underbar:<div class='"+el.UnderbarColor+"'>"+el.UnderbarOne+"</div></li>")
     })
