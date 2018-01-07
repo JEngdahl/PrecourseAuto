@@ -51,9 +51,9 @@ module.exports = function(app,db) {
               el.KoansColor = "yellow"
             }
 
-            if(el.Underbar > 120){
+            if(el.UnderbarOne > 120){
               el.UnderbarColor = "green"
-            }else if(el.Underbar < 60){
+            }else if(el.UnderbarOne < 60){
               el.UnderbarColor = "red"
             }else{
               el.UnderbarColor = "yellow"
