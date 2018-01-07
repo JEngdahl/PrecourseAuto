@@ -39,12 +39,15 @@ li:hover {
   border: solid 3px black;
   background-color: white;
 }
-#green {
+.green {
   background-color: green;
+  display: inline;
 }
-#yellow {
+.yellow {
   background-color: yellow;
+  display: inline;
 }
-#red {
+.red {
   background-color: red;
+  display: inline;
 }
