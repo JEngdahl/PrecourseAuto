@@ -42,9 +42,34 @@ module.exports = function(app,db) {
         if(err){
           res.send(err)
         }
-          res.send(resp)
+          res.send(resp.map(function(el){
+            if(el.Koans > 50){
+              el.KoansColor = "green"
+            }else if(el.Koans < 25){
+              el.KoansColor = "red"
+            }else{
+              el.KoansColor = "yellow"
+            }
+
+            if(el.Underbar > 120){
+              el.UnderbarColor = "green"
+            }else if(el.Underbar < 60){
+              el.UnderbarColor = "red"
+            }else{
+              el.UnderbarColor = "yellow"
+            }
+
+            if(el.Recursion >= 2){
+              el.RecursionColor = "green"
+            }else if(el.Recursion <= 1){
+              el.RecursionColor = "red"
+            }else{
+              el.RecursionColor = "yellow"
+            }
+
+            return el
+          }));
       })
-      .then(function(data){console.log(data)})
     }
   })
 
