@@ -13,8 +13,9 @@ $("document").ready(function(){
 $.ajax(settings).done(function (response) {
   console.log(response);
   var splitResponse = response.split(" ");
+  splitResponse = splitResponse.sort()
+
   splitResponse.forEach(function(e){
-    e = e.sort()
    $("#listCohorts").append("<li>"+e+"</li>")
   })
 });
