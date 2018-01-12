@@ -58,7 +58,7 @@ typings/
 .env
 
 #ClassContainer folder
-/ClassContainer
+server/client/ClassContainer
 
 #miscshit
 data.js

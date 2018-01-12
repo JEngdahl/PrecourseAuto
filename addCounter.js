@@ -1,5 +1,5 @@
 var fs = require('fs');
-var path = __dirname + '/ClassContainer/'+process.argv[2]+'/'+process.argv[3]+'/recursion/src/'
+var path = __dirname + '/server/client/ClassContainer/'+process.argv[2]+'/'+process.argv[3]+'/recursion/src/'
 console.log(path)
 fs.exists(path+"getElementsByClassName.js",function(exists){
   console.log(exists)
