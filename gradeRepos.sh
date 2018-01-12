@@ -33,7 +33,10 @@ for i in $CLASSLIST; do
       git clone --quiet  https://github.com/$j/$i-javascript-koans ./ClassContainer/$i/$j/javascript-koans
       git clone --quiet https://github.com/$j/$i-underbar ./ClassContainer/$i/$j/underbar
       node addCounter.js $i $j
-      babel ./ClassContainer/$i/$j/underbar/src/underbar.js --out-file ./ClassContainer/$i/$j/underbar/src/underbar.js
+      if [[ -e ./ClassContainer/$i/$j/underbar/src/underbar.js ]]; then
+         echo 'Babel underbar.js ES6 -> ES5'
+         babel ./ClassContainer/$i/$j/underbar/src/underbar.js --out-file ./ClassContainer/$i/$j/underbar/src/underbar.js
+      fi
     fi
   done
 done
