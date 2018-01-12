@@ -1,8 +1,28 @@
-module.exports = function(app,db) {
+module.exports = function(app,db,lb) {
 
 
   app.get('/',function(req,res){
     res.sendFile(__dirname+'/client/index.html')
+  })
+
+  app.get('/repo',function(req,res){
+    //http://localhost:3000/repo?class=SSP7&user=cmourani&repo=recursion
+    var r = req.query
+    if (r.repo === rc){
+      res.sendFile(lb+'/ClassContainer/'+r.class+'/'+r.user+'/recursion/SpecRunner.html')
+    }
+    if (r.repo === ko){
+      res.sendFile(lb+'/ClassContainer/'+r.class+'/'+r.user+'/javascript-koans/KoansRunner.html')
+    }
+    // if (r.repo === tw){
+    //   res.sendFile(lb+'/ClassContainer/'+r.class+'/'+r.user+'/'+twittler+'/src/test.html')
+    // }
+    if (r.repo === tb){
+      res.sendFile(lb+'/ClassContainer/'+r.class+'/'+r.user+'/testbuilder/index.html')
+    }
+    if (r.repo === ub){
+      res.sendFile(lb+'/ClassContainer/'+r.class+'/'+r.user+'/underbar/SpecRunner.html')
+    }
   })
 
 

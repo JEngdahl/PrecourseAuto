@@ -29,6 +29,7 @@ for i in $CLASSLIST; do
       babel ./ClassContainer/SSP7/$j/underbar/src/underbar.js --out-file ./ClassContainer/SSP7/$j/underbar/src/underbar.js
     else
       git clone --quiet https://github.com/$j/$i-recursion ./ClassContainer/$i/$j/recursion
+      git clone --quiet https://github.com/$j/$i-twittler ./ClassContainer/$i/$j/twittler
       git clone --quiet https://github.com/$j/$i-testbuilder ./ClassContainer/$i/$j/testbuilder
       git clone --quiet  https://github.com/$j/$i-javascript-koans ./ClassContainer/$i/$j/javascript-koans
       git clone --quiet https://github.com/$j/$i-underbar ./ClassContainer/$i/$j/underbar
