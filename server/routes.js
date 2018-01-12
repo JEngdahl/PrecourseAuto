@@ -12,7 +12,7 @@ module.exports = function(app,db,lb) {
       res.sendFile(lb+'/ClassContainer/'+r.class+'/'+r.user+'/recursion/SpecRunner.html')
     }
     if (r.repo === "ko"){
-      res.sendFile('./ClassContainer/'+r.class+'/'+r.user+'/javascript-koans/KoansRunner.html')
+      res.sendFile('./ClassContainer/'+r.class+'/'+r.user+'/javascript-koans/KoansRunner.html', {root: lb})
     }
     // if (r.repo === tw){
     //   res.sendFile(lb+'/ClassContainer/'+r.class+'/'+r.user+'/'+twittler+'/src/test.html')
