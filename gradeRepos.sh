@@ -26,12 +26,14 @@ for i in $CLASSLIST; do
       git clone --quiet https://github.com/$j/SSP7-javascript-koans ./ClassContainer/SSP7/$j/javascript-koans
       git clone --quiet https://github.com/$j/SSP7-underbar ./ClassContainer/SSP7/$j/underbar
       node addCounter.js SSP7 $j
+      babel ./ClassContainer/SSP7/$j/underbar/src/underbar.js --out-file ./ClassContainer/SSP7/$j/underbar/src/underbar.js
     else
       git clone --quiet https://github.com/$j/$i-recursion ./ClassContainer/$i/$j/recursion
       git clone --quiet https://github.com/$j/$i-testbuilder ./ClassContainer/$i/$j/testbuilder
       git clone --quiet  https://github.com/$j/$i-javascript-koans ./ClassContainer/$i/$j/javascript-koans
       git clone --quiet https://github.com/$j/$i-underbar ./ClassContainer/$i/$j/underbar
       node addCounter.js $i $j
+      babel ./ClassContainer/$i/$j/underbar/src/underbar.js --out-file ./ClassContainer/$i/$j/underbar/src/underbar.js
     fi
   done
 done
