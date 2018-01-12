@@ -8,7 +8,7 @@ echo $TEST
 RESPONSE=`$TEST`
 
 echo module.exports = $RESPONSE > data.js
-rm -rf ClassContainer
+rm -rf ./server/client/ClassContainer
 
 CLASSLISTGET="curl http://34.207.251.58:3000/api/classlist"
 echo $CLASSLISTGET
