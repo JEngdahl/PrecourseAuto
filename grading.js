@@ -59,6 +59,18 @@ this.echo("start")
   })
 })
 .then(function(){
+  this.each(tempData, function(self, item){
+      self.thenOpen('http://localhost:9000/'+item.Class+'/'+item.GithubName+'/testbuilder/index.html', function(){
+        var passedTests = this.evaluate(function(){
+          return document.querySelector("#mocha-stats > li.passes > em").textContent;
+        });
+
+        item.Testbuilder = passedTests;
+        this.echo('Testbuilder: ' + item.FullName +", Passed = "+passedTests+"/4")
+      })
+  })
+})
+.then(function(){
   fs.write('./gradedata.js', JSON.stringify(data), 'w');
 })
 

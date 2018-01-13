@@ -34,6 +34,7 @@ for i in $CLASSLIST; do
       git clone --quiet  https://github.com/$j/$i-javascript-koans ./server/client/ClassContainer/$i/$j/javascript-koans
       git clone --quiet https://github.com/$j/$i-underbar ./server/client/ClassContainer/$i/$j/underbar
       node addCounter.js $i $j
+      node addCalls.js $i $j
       if [[ -e ./server/client/ClassContainer/$i/$j/underbar/src/underbar.js ]]; then
          echo 'Babel underbar.js ES6 -> ES5'
          babel ./server/client/ClassContainer/$i/$j/underbar/src/underbar.js --out-file ./server/client/ClassContainer/$i/$j/underbar/src/underbar.js
