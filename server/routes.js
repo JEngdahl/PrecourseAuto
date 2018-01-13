@@ -5,26 +5,26 @@ module.exports = function(app,db,lb) {
     res.sendFile(__dirname+'/client/index.html')
   })
 
-  app.get('/repo',function(req,res){
-    //http://localhost:3000/repo?class=SSP7&user=cmourani&repo=recursion
-    console.log(":::")
-    var r = req.query
-    if (r.repo === "rc"){
-      res.sendFile(__dirname+'/client/ClassContainer/'+r.class+'/'+r.user+'/recursion/SpecRunner.html')
-    }
-    if (r.repo === "ko"){
-      res.sendFile(__dirname+'/client/ClassContainer/'+r.class+'/'+r.user+'/javascript-koans/KoansRunner.html')
-    }
-    // if (r.repo === tw){
-    //   res.sendFile(__dirname+'/ClassContainer/'+r.class+'/'+r.user+'/'+twittler+'/src/test.html')
-    // }
-    if (r.repo === "tb"){
-      res.sendFile(__dirname+'/client/ClassContainer/'+r.class+'/'+r.user+'/testbuilder/index.html')
-    }
-    if (r.repo === "ub"){
-      res.sendFile(__dirname+'/client/ClassContainer/'+r.class+'/'+r.user+'/underbar/SpecRunner.html')
-    }
-  })
+  // app.get('/repo',function(req,res){
+  //   //http://localhost:3000/repo?class=SSP7&user=cmourani&repo=recursion
+  //   console.log(":::")
+  //   var r = req.query
+  //   if (r.repo === "rc"){
+  //     res.sendFile(__dirname+'/client/ClassContainer/'+r.class+'/'+r.user+'/recursion/SpecRunner.html')
+  //   }
+  //   if (r.repo === "ko"){
+  //     res.sendFile(__dirname+'/client/ClassContainer/'+r.class+'/'+r.user+'/javascript-koans/KoansRunner.html')
+  //   }
+  //   // if (r.repo === tw){
+  //   //   res.sendFile(__dirname+'/ClassContainer/'+r.class+'/'+r.user+'/'+twittler+'/src/test.html')
+  //   // }
+  //   if (r.repo === "tb"){
+  //     res.sendFile(__dirname+'/client/ClassContainer/'+r.class+'/'+r.user+'/testbuilder/index.html')
+  //   }
+  //   if (r.repo === "ub"){
+  //     res.sendFile(__dirname+'/client/ClassContainer/'+r.class+'/'+r.user+'/underbar/SpecRunner.html')
+  //   }
+  // })
 
 
   app.get('/api/classlist', function(req, res){
