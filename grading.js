@@ -38,7 +38,7 @@ this.echo("start")
       item.Class = "SSP7"
     }
    self.thenOpen('http://localhost:9000/'+item.Class+'/'+item.GithubName+'/underbar/SpecRunner.html', function(){
-     casper.waitForSelector('#mocha-report > li:nth-child(3) > ul > li:nth-child(8) > ul > li:nth-child(2) > h2', function() {
+     this.waitForSelector('#mocha-report > li:nth-child(3) > ul > li:nth-child(8) > ul > li:nth-child(2) > h2', function() {
           var passed = this.evaluate(function(){
             return document.querySelector("#mocha-stats > li.passes > em").textContent
           })
