@@ -38,12 +38,12 @@ this.echo("start")
       item.Class = "SSP7"
     }
    self.thenOpen('http://localhost:9000/'+item.Class+'/'+item.GithubName+'/underbar/SpecRunner.html', function(){
-     this.waitForSelector('#mocha-report > li:nth-child(3) > ul > li:nth-child(8) > ul > li:nth-child(2) > h2', function() {
-          var passed = this.evaluate(function(){
+     self.waitForSelector('#mocha-report > li:nth-child(3) > ul > li:nth-child(8) > ul > li:nth-child(2) > h2', function() {
+          var passed = self.evaluate(function(){
             return document.querySelector("#mocha-stats > li.passes > em").textContent
           })
           item.UnderbarOne = passedTests || 0;
-          this.echo('Underbar 1 & 2: ' + item.FullName +", Passed = "+passedTests+"/141")
+          self.echo('Underbar 1 & 2: ' + item.FullName +", Passed = "+passedTests+"/141")
       },1000);
       // var passedTests = this.evaluate(function(){
       //   return document.querySelector("#mocha-stats > li.passes > em").textContent;
