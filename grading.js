@@ -38,7 +38,7 @@ this.echo("start")
           })
           item.UnderbarOne = passedTests || 0;
           self.echo('Underbar 1 & 2: ' + item.FullName +", Passed = "+passedTests+"/141")
-      },1000);
+      });
     })
   })
 })
