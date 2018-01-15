@@ -26,19 +26,31 @@ this.echo("start")
       });
       item.Koans = passedTests || 0;
       this.echo('Koans: ' + item.FullName +", Passed = "+passedTests+"/55")
-    })
+    }, function(){
+      var passedTests = this.evaluate(function(){
+        return document.querySelector("body > div > div.progress > span:nth-child(1) > div > div > div.completion > div:nth-child(2) > span.value").textContent.split("/")[0];
+      });
+      item.Koans = passedTests || 0;
+      this.echo('Koans: ' + item.FullName +", Passed = "+passedTests+"/55")
+    }, 7000)
   })
 })
 .then(function(){
   this.each(tempData, function(self, item){
    self.thenOpen('http://localhost:9000/'+item.Class+'/'+item.GithubName+'/underbar/SpecRunner.html', function(){
      self.waitForSelector('#mocha-report > li:nth-child(3) > ul > li:nth-child(8) > ul > li:nth-child(2) > h2', function() {
-          var passed = self.evaluate(function(){
+          var passedTests = self.evaluate(function(){
             return document.querySelector("#mocha-stats > li.passes > em").textContent
           })
           item.UnderbarOne = passedTests || 0;
           self.echo('Underbar 1 & 2: ' + item.FullName +", Passed = "+passedTests+"/141")
-      });
+      },function(){
+          var passedTests = self.evaluate(function(){
+            return document.querySelector("#mocha-stats > li.passes > em").textContent
+          })
+          item.UnderbarOne = passedTests || 0;
+          self.echo('Underbar 1 & 2: ' + item.FullName +", Passed = "+passedTests+"/141")
+      }, 7000);
     })
   })
 })
@@ -51,7 +63,14 @@ this.echo("start")
 
         item.Recursion = passedTests;
         this.echo('Recursion: ' + item.FullName +", Passed = "+passedTests+"/4")
-      })
+      }, function(){
+        var passedTests = this.evaluate(function(){
+          return document.querySelector("#mocha-stats > li.passes > em").textContent;
+        });
+
+        item.Recursion = passedTests;
+        this.echo('Recursion: ' + item.FullName +", Passed = "+passedTests+"/4")
+      },7000)
   })
 })
 .then(function(){
