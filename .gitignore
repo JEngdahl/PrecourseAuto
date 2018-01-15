@@ -67,5 +67,8 @@ runtimes.txt
 test.sh
 testing.txt
 
+#testing modules
+testbuilderGrade.js
+
 # keys
 keys.js
