@@ -46,7 +46,7 @@ $(document).on('click','#listCohorts li',function(){
       return 0
     })
     r.forEach(function(el){
-      $("#cContainer").append("<li>"+el.FullName+" <a target='_blank' href='http://34.207.251.58:9000/"+el.Class+"/"+el.GithubName+"/javascript-koans/KoansRunner.html'>Koans</a>:<div class='"+el.KoansColor+"'>"+el.Koans+"</div> <a target='_blank' href='http://34.207.251.58:9000/"+el.Class+"/"+el.GithubName+"/recursion/SpecRunner.html'>Recursion</a>:<div class='"+el.RecursionColor+"'>"+el.Recursion+"</div><a target='_blank' href='http://34.207.251.58:9000/"+el.Class+"/"+el.GithubName+"/underbar/SpecRunner.html'>Underbar</a>:<div class='"+el.UnderbarColor+"'>"+el.UnderbarOne+"</div><a target='_blank' href='http://34.207.251.58:9000/"+el.Class+"/"+el.GithubName+"/twittler/index.html'>Twittler</a></li>")
+      $("#cContainer").append("<li>"+el.FullName+" <a target='_blank' href='http://34.207.251.58:9000/"+el.Class+"/"+el.GithubName+"/javascript-koans/KoansRunner.html'>Koans</a>:<div class='"+el.KoansColor+"'>"+el.Koans+"</div> <a target='_blank' href='http://34.207.251.58:9000/"+el.Class+"/"+el.GithubName+"/recursion/SpecRunner.html'>Recursion</a>:<div class='"+el.RecursionColor+"'>"+el.Recursion+"</div><a target='_blank' href='http://34.207.251.58:9000/"+el.Class+"/"+el.GithubName+"/underbar/SpecRunner.html'>Underbar</a>:<div class='"+el.UnderbarColor+"'>"+el.UnderbarOne+"</div><a target='_blank' href='http://34.207.251.58:9000/"+el.Class+"/"+el.GithubName+"/twittler/index.html'>Twittler</a></li><a target='_blank' href='http://34.207.251.58:9000/"+el.Class+"/"+el.GithubName+"/testbuilder/index.html'>Testbuilder: <div >"+el.testbuilder+"</div></a></li>")
     })
   })
 })
