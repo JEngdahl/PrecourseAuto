@@ -88,6 +88,13 @@ module.exports = function(app,db,lb) {
               el.RecursionColor = "yellow"
             }
 
+            if(el.Testbuilder >= 3000){
+              el.TestbuilderColor = "green"
+            }else if(el.Testbuilder <= 300){
+              el.TestbuilderColor = "red"
+            }else{
+              el.TestbuilderColor = "yellow"
+            }
             return el
           }));
       })
@@ -114,7 +121,7 @@ module.exports = function(app,db,lb) {
     var r = JSON.parse(req.body.data);
     r.forEach(function(e,i){
       //"id":2,"FullName":"Aaron Valdez","GithubName":"A-A-RonV","Class":"SSP8","UnderbarOne":"100","UnderbarTwo":null,"Testbuilder":null,"Koans":"54","Recursion":null
-      db.query("UPDATE precourse.Students SET Koans = "+e.Koans+", UnderbarOne = "+e.UnderbarOne+", Recursion = "+e.Recursion+" WHERE id ="+e.id+";",function(err){
+      db.query("UPDATE precourse.Students SET Koans = "+e.Koans+", UnderbarOne = "+e.UnderbarOne+", Recursion = "+e.Recursion+" WHERE id ="+e.id+", Testbuilder = "+e.Testbuilder+" WHERE id ="+e.id+";",function(err){
         if(err){
           console.log(err)
         } else {
