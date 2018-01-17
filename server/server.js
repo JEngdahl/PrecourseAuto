@@ -3,7 +3,7 @@ let app = express()
 var keys = require('./keys.js')
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
-app.use(express.static(__dirname+"/client"));
+app.use(express.static(__dirname+"/client/build"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 var db = mysql.createConnection(keys);
