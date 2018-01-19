@@ -21,18 +21,20 @@ this.echo("start")
   this.each(tempData, function(self, item){
 	this.echo(item)
     self.thenOpen('http://localhost:9000/'+item.Class+'/'+item.GithubName+'/javascript-koans/KoansRunner.html', function(){
-      var passedTests = this.evaluate(function(){
-        return document.querySelector("body > div > div.progress > span:nth-child(1) > div > div > div.completion > div:nth-child(2) > span.value").textContent.split("/")[0];
-      });
-      item.Koans = passedTests || 0;
-      this.echo('Koans: ' + item.FullName +", Passed = "+passedTests+"/55")
-    }, function(){
-      var passedTests = this.evaluate(function(){
-        return document.querySelector("body > div > div.progress > span:nth-child(1) > div > div > div.completion > div:nth-child(2) > span.value").textContent.split("/")[0];
-      });
-      item.Koans = passedTests || 0;
-      this.echo('Koans: ' + item.FullName +", Passed = "+passedTests+"/55")
-    }, 7000)
+      this.wait(3300, function() {
+        var passedTests = this.evaluate(function(){
+          return document.querySelector("body > div > div.progress > span:nth-child(1) > div > div > div.completion > div:nth-child(2) > span.value").textContent.split("/")[0];
+        });
+        item.Koans = passedTests || 0;
+        this.echo('Koans: ' + item.FullName +", Passed = "+passedTests+"/55")
+      }, function(){
+        var passedTests = this.evaluate(function(){
+          return document.querySelector("body > div > div.progress > span:nth-child(1) > div > div > div.completion > div:nth-child(2) > span.value").textContent.split("/")[0];
+        });
+        item.Koans = passedTests || 0;
+        this.echo('Koans: ' + item.FullName +", Passed = "+passedTests+"/55")
+      }, 7000)
+    })
   })
 })
 .then(function(){

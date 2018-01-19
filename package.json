@@ -20,12 +20,15 @@
   },
   "homepage": "https://github.com/JEngdahl/PrecourseAuto#readme",
   "dependencies": {
+    "alphanumeric-sort": "0.0.1",
+    "axios": "^0.17.1",
     "express": "^4.16.2",
     "mysql": "^2.15.0",
-    "sql": "^0.78.0",
     "react": "^16.2.0",
+    "react-bootstrap": "^0.32.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.0"
+    "react-scripts": "1.1.0",
+    "sql": "^0.78.0"
   }
 }

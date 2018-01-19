@@ -1,4 +1,4 @@
-module.exports = function(app,db) {
+module.exports = function(app,db,compare) {
 
 
   app.get('/',function(req,res){
@@ -23,6 +23,19 @@ module.exports = function(app,db) {
         res.send(err)
       }
       res.send(resp.map(e=>e.GithubName).join(" "))
+    })
+  })
+
+
+  app.get('/api/cohorts', function(req, res){
+    db.query("SELECT DISTINCT Class FROM precourse.Students WHERE Class LIKE '"+req.query.c+"%';",function(err,resp){
+      console.log(resp)
+      if(err){
+        res.send(err)
+      }
+      var c = resp.map(e=>e.Class)
+      c = c.sort(compare)
+      res.send(c)
     })
   })
 
