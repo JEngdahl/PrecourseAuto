@@ -39,6 +39,30 @@ module.exports = function(app,db,compare) {
     })
   })
 
+  app.get('/api/student', function(req, res){
+    db.query("SELECT * FROM precourse.Students WHERE GithubName='"+req.query.s+"';",function(err,resp){
+      console.log(resp)
+      if(err){
+        res.send(err)
+      }
+      function convertToPercentage(top,current){
+       return (current / top) * 100
+      }
+      res.send(resp.map(function(el){
+
+        el.KoansPercent = Math.round(convertToPercentage(54,el.Koans))
+        el.UnderbarPercent = Math.round(convertToPercentage(128,el.UnderbarOne))
+        el.RecursionPercent = Math.round(convertToPercentage(2,el.Recursion))
+        if(el.Testbuilder > 3299){
+          el.TestbuilderPercent = 100;
+        } else {
+          el.TestbuilderPercent = Math.round(convertToPercentage(3299,el.Testbuilder))
+        }
+        return el
+      }));
+    })
+  })
+
 
   app.get('/api/class', function(req, res){
     console.log(req.query.c)
@@ -51,44 +75,28 @@ module.exports = function(app,db,compare) {
         res.send(resp)
       })
     } else {
+      function convertToPercentage(top,current){
+       return (current / top) * 100
+      }
       db.query("SELECT * FROM precourse.Students WHERE class='"+req.query.c+"';",function(err,resp){
         if(err){
           res.send(err)
         }
+        if(!resp){
+          res.send("404")
+        }
+        if(resp.length){
           res.send(resp.map(function(el){
-            if(el.Koans > 50){
-              el.KoansColor = "green"
-            }else if(el.Koans < 25){
-              el.KoansColor = "red"
-            }else{
-              el.KoansColor = "yellow"
-            }
+            el.KoansPercent = Math.round(convertToPercentage(54,el.Koans))
+            el.UnderbarPercent = Math.round(convertToPercentage(128,el.UnderbarOne))
+            el.TestbuilderPercent = Math.round(convertToPercentage(3300,el.Testbuilder))
+            el.RecursionPercent = Math.round(convertToPercentage(2,el.Recursion))
 
-            if(el.UnderbarOne > 120){
-              el.UnderbarColor = "green"
-            }else if(el.UnderbarOne < 60){
-              el.UnderbarColor = "red"
-            }else{
-              el.UnderbarColor = "yellow"
-            }
-
-            if(el.Recursion >= 2){
-              el.RecursionColor = "green"
-            }else if(el.Recursion <= 1){
-              el.RecursionColor = "red"
-            }else{
-              el.RecursionColor = "yellow"
-            }
-
-            if(el.Testbuilder >= 3000){
-              el.TestbuilderColor = "green"
-            }else if(el.Testbuilder <= 300){
-              el.TestbuilderColor = "red"
-            }else{
-              el.TestbuilderColor = "yellow"
-            }
             return el
           }));
+        } else {
+          res.send("404")
+        }
       })
     }
   })
@@ -102,11 +110,10 @@ module.exports = function(app,db,compare) {
       db
       .query("INSERT INTO precourse.Students (`FullName`,`GithubName`,`Class`) VALUES ('"+e+"','"+r.handles[i]+"','"+r.class+"');",function(){
         if(i === r.names.length - 1){
-	  res.send("done")
-	}
+      	  res.send("done")
+      	}
       })
-
-       })
+    })
   })
 
   app.post('/api/updatebyhandle', function(req, res){

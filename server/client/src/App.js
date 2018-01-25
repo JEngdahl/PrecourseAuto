@@ -10,6 +10,8 @@ import {
 import ClassList from "./ClassList";
 import CohortList from "./CohortList";
 import Cohort from "./Cohort";
+import Student from "./Student";
+
 
 // import Stuff from "./Stuff";
 // import Contact from "./Contact";
@@ -28,6 +30,7 @@ class App extends Component {
             <Route exact path="/" component={ClassList}/>
             <Route exact path="/:campus" component={CohortList}/>
             <Route exact path="/:campus/:cohort" component={Cohort}/>
+            <Route exact path="/:campus/:cohort/:student" component={Student}/>
           </Switch>
         </BrowserRouter >
 

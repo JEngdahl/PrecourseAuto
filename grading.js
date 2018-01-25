@@ -78,7 +78,7 @@ this.echo("start")
 .then(function(){
   this.each(tempData, function(self, item){
       self.thenOpen('http://localhost:9000/'+item.Class+'/'+item.GithubName+'/testbuilder/index.html', function(){
-        this.wait(3300, function() {
+        this.wait(5000, function() {
           var passedTests = this.evaluate(function(){
             return document.querySelector("#mocha-stats > li.passes > em").textContent
           })
