@@ -29,7 +29,7 @@ casper
 
         item.Recursion = passedTests;
         this.echo('Recursion: ' + item.FullName +", Passed = "+passedTests+"/4")
-      },7000)
+      },3000)
   })
 })
 .then(function(){

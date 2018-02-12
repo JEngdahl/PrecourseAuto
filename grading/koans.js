@@ -30,7 +30,7 @@ this.echo("start")
         });
         item.Koans = passedTests || 0;
         //this.echo('Koans: ' + item.FullName +", Passed = "+passedTests+"/55")
-      }, 7000)
+      })
     })
   })
 })
