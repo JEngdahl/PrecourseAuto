@@ -34,7 +34,7 @@ casper
 })
 .then(function(){
   var content = JSON.stringify(tempData)
-  fs.writeFile('../data.js',content,'w');
+  fs.writeFile('./../data.js',content,'w');
 })
 
 casper.run();

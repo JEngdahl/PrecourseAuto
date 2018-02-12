@@ -1,4 +1,4 @@
-var data = require('../data.js')
+var data = require('./../data.js')
 var utils = require('utils')
 var http = require('http')
 var fs = require('fs')
@@ -28,7 +28,7 @@ casper
 })
 .then(function(){
   var content = "module.exports = " + JSON.stringify(tempData)
-  fs.writeFile('../data.js',content,'w');
+  fs.writeFile('./../data.js',content,'w');
 })
 
 casper.run();

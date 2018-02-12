@@ -18,7 +18,7 @@ this.echo("start")
   this.each(tempData, function(self, item){
     this.echo(item)
     self.thenOpen('http://localhost:9000/'+item.Class+'/'+item.GithubName+'/javascript-koans/KoansRunner.html', function(){
-      this.wait(3300, function() {
+      this.wait(1000, function() {
         var passedTests = this.evaluate(function(){
           return document.querySelector("body > div > div.progress > span:nth-child(1) > div > div > div.completion > div:nth-child(2) > span.value").textContent.split("/")[0];
         });
@@ -36,7 +36,7 @@ this.echo("start")
 })
 .then(function(){
   var content = "module.exports = " + JSON.stringify(tempData)
-  fs.writeFile('../data.js',content,'w');
+  fs.writeFile('./../data.js',content,'w');
 })
 
 casper.run();
