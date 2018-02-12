@@ -28,7 +28,10 @@ casper
 })
 .then(function(){
   var content = "module.exports = " + JSON.stringify(tempData)
-  fs.writeFile('./../data.js',content,'w');
+  fs.remove('data.js')
+  this.echo("Deleted")
+  fs.write('data.js',content,"w")
+  this.echo("Created")
 })
 
 casper.run();
