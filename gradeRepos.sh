@@ -26,17 +26,18 @@ for i in $CLASSLIST; do
     node addCounter.js $i $j
     node addLocalStorage.js $i $j
     if [[ -e ./server/client/ClassContainer/$i/$j/underbar/src/underbar.js ]]; then
-       echo 'Babel underbar.js ES6 -> ES5'
+       echo 'Babel underbar.js ES6 => ES5'
        babel ./server/client/ClassContainer/$i/$j/underbar/src/underbar.js --out-file ./server/client/ClassContainer/$i/$j/underbar/src/underbar.js
     fi
   done
 done
-
 casperjs grading.js
+# casperjs grading/koans.js
+# casperjs grading/recursion.js
+# casperjs grading/testbuilder.js
+# casperjs grading/underbar.js
 
-value=$(<gradedata.js)
+value=$(<data.js)
 curl --data "data=$value" http://34.207.251.58:3000/api/updatebyhandle
-echo $SEND
-
 echo $(date) >> runtimes.txt
 #curl -X POST http://localhost:1337/api/updatebyhandle -H 'Cache-Control: no-cache' -H 'Content-Type: application/json' -d '$value'
