@@ -16,6 +16,7 @@ casper
 .then(function(){
 this.echo("start")
   this.each(tempData, function(self, item){
+    this.echo(item)
     self.thenOpen('http://localhost:9000/'+item.Class+'/'+item.GithubName+'/javascript-koans/KoansRunner.html', function(){
       this.wait(3300, function() {
         var passedTests = this.evaluate(function(){
