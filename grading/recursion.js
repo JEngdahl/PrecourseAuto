@@ -34,9 +34,9 @@ casper
 })
 .then(function(){
   var content = "module.exports = " + JSON.stringify(tempData)
-  fs.remove('newData.js')
+  fs.remove('data.js')
   this.echo("Deleted")
-  fs.write('newData.js',content,"w")
+  fs.write('data.js',content,"w")
   this.echo("Created")
 })
 
