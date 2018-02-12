@@ -13,8 +13,22 @@ var casper = require('casper').create({
 
 casper
 .start()
-
+.then(function(){
+  this.each(tempData, function(self, item){
+      self.thenOpen('http://localhost:9000/'+item.Class+'/'+item.GithubName+'/testbuilder/index.html', function(){
+        this.wait(5000, function() {
+          var passedTests = this.evaluate(function(){
+            return document.querySelector("#mocha-stats > li.passes > em").textContent
+          })
+          item.Testbuilder = passedTests;
+          this.echo('TestBuilder: ' + item.FullName +", Passed = "+passedTests)
+        });
+      })
+  })
+})
 .then(function(){
   var content = "module.exports = " + JSON.stringify(tempData)
   fs.writeFile('../data.js',content,'w');
 })
+
+casper.run();

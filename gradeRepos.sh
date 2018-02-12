@@ -31,11 +31,11 @@ for i in $CLASSLIST; do
     fi
   done
 done
-casperjs grading.js
-# casperjs grading/koans.js
-# casperjs grading/recursion.js
-# casperjs grading/testbuilder.js
-# casperjs grading/underbar.js
+# casperjs grading.js
+casperjs grading/koans.js
+casperjs grading/recursion.js
+casperjs grading/testbuilder.js
+casperjs grading/underbar.js
 
 value=$(<data.js)
 curl --data "data=$value" http://34.207.251.58:3000/api/updatebyhandle

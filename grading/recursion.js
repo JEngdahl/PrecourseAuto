@@ -13,8 +13,28 @@ var casper = require('casper').create({
 
 casper
 .start()
+.then(function(){
+  this.each(tempData, function(self, item){
+      self.thenOpen('http://localhost:9000/'+item.Class+'/'+item.GithubName+'/recursion/SpecRunner.html', function(){
+        var passedTests = this.evaluate(function(){
+          return document.querySelector("#mocha-stats > li.passes > em").textContent;
+        });
 
+        item.Recursion = passedTests;
+        this.echo('Recursion: ' + item.FullName +", Passed = "+passedTests+"/4")
+      }, function(){
+        var passedTests = this.evaluate(function(){
+          return document.querySelector("#mocha-stats > li.passes > em").textContent;
+        });
+
+        item.Recursion = passedTests;
+        this.echo('Recursion: ' + item.FullName +", Passed = "+passedTests+"/4")
+      },7000)
+  })
+})
 .then(function(){
   var content = "module.exports = " + JSON.stringify(tempData)
   fs.writeFile('../data.js',content,'w');
 })
+
+casper.run();
