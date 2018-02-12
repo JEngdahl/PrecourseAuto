@@ -34,10 +34,7 @@ casper
 })
 .then(function(){
   var content = "module.exports = " + JSON.stringify(tempData)
-  fs.write('./../newData.js',content,function(err){
-    if (err) throw err;
-    console.log('The file has been saved!');
-  });
+  fs.write('./../newData.js',content)
 })
 
 casper.run();
