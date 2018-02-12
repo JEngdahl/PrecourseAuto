@@ -34,7 +34,7 @@ casper
 })
 .then(function(){
   var content = "module.exports = " + JSON.stringify(tempData)
-  fs.write('./../newData.js',content)
+  fs.write('newData.js',content,"w")
 })
 
 casper.run();
