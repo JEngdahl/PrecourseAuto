@@ -40,4 +40,4 @@ casperjs grading/underbar.js
 value=$(<data.js)
 curl --data "data=$value" http://34.207.251.58:3000/api/updatebyhandle
 echo $(date) >> runtimes.txt
-#curl -X POST http://localhost:1337/api/updatebyhandle -H 'Cache-Control: no-cache' -H 'Content-Type: application/json' -d '$value'
+#curl -X POST http://34.207.251.58:1337/api/updatebyhandle -H 'Cache-Control: no-cache' -H 'Content-Type: application/json' -d '$value'

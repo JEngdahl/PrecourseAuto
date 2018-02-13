@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import {Polar} from 'react-chartjs-2';
+import StudentWork from "./StudentWork"
 
 var chart = {
   datasets: [{
@@ -63,6 +64,7 @@ class Student extends Component {
           <div classname="spacer">
             <Polar className="studentChart" width={500} height={360} data={this.state.chartData}/>
           </div>
+          <StudentWork student={this.state.student}/>
         </div>
       </div>
     )
