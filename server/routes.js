@@ -91,7 +91,9 @@ module.exports = function(app,db,compare) {
             el.UnderbarPercent = Math.round(convertToPercentage(128,el.UnderbarOne))
             el.TestbuilderPercent = Math.round(convertToPercentage(3300,el.Testbuilder))
             el.RecursionPercent = Math.round(convertToPercentage(2,el.Recursion))
-
+            if(el.Testbuilder > 3300){
+              el.TestbuilderPercent = 100;
+            }
             return el
           }));
         } else {

@@ -7,7 +7,7 @@ echo $TEST
 RESPONSE=`$TEST`
 
 echo module.exports = $RESPONSE > data.js
-rm -rf ./server/client/ClassContainer/*   
+rm -rf ./server/client/ClassContainer/*
 
 CLASSLISTGET="curl http://34.207.251.58:3000/api/classlist"
 echo $CLASSLISTGET
@@ -21,7 +21,7 @@ for i in $CLASSLIST; do
     git clone --quiet https://github.com/$j/$i-recursion ./server/client/ClassContainer/$i/$j/recursion
     git clone --quiet https://github.com/$j/$i-twittler ./server/client/ClassContainer/$i/$j/twittler
     git clone --quiet https://github.com/$j/$i-testbuilder ./server/client/ClassContainer/$i/$j/testbuilder
-    git clone --quiet  https://github.com/$j/$i-javascript-koans ./server/client/ClassContainer/$i/$j/javascript-koans
+    git clone --quiet https://github.com/$j/$i-javascript-koans ./server/client/ClassContainer/$i/$j/javascript-koans
     git clone --quiet https://github.com/$j/$i-underbar ./server/client/ClassContainer/$i/$j/underbar
     node addCounter.js $i $j
     node addLocalStorage.js $i $j
