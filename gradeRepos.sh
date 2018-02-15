@@ -1,6 +1,7 @@
 #!/bin/bash
 rm data.js
-touch data.js
+rm sendData.js
+touch data.js sendData.js
 TEST="curl http://34.207.251.58:3000/api/class?c=all"
 echo $TEST
 
@@ -34,7 +35,7 @@ done
 # casperjs grading.js
 casperjs grading/koans.js && casperjs grading/recursion.js && casperjs grading/testbuilder.js && casperjs grading/underbar.js
 
-value=$(<data.js)
+value=$(<sendData.js)
 curl --data "data=$value" http://34.207.251.58:3000/api/updatebyhandle
 echo $(date) >> runtimes.txt
 #curl -X POST http://34.207.251.58:1337/api/updatebyhandle -H 'Cache-Control: no-cache' -H 'Content-Type: application/json' -d '$value'

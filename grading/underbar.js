@@ -34,10 +34,8 @@ casper
 })
 .then(function(){
   var content = JSON.stringify(tempData)
-  fs.remove('data.js')
-  this.echo("Deleted")
-  fs.write('data.js',content,"w")
-  this.echo("Created")
+  fs.write('sendData.js',content,"w")
+  this.echo("Created sendData")
 })
 
 casper.run();

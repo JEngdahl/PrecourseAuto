@@ -109,8 +109,7 @@ module.exports = function(app,db,compare) {
     var r = req.body
     r.names.forEach(function(e,i){
       console.log(e)
-      db
-      .query("INSERT INTO precourse.Students (`FullName`,`GithubName`,`Class`) VALUES ('"+e+"','"+r.handles[i]+"','"+r.class+"');",function(){
+      db.query("INSERT INTO precourse.Students (`FullName`,`GithubName`,`Class`) VALUES ('"+e+"','"+r.handles[i]+"','"+r.class+"');",function(){
         if(i === r.names.length - 1){
       	  res.send("done")
       	}
