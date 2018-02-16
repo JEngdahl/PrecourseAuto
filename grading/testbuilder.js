@@ -15,7 +15,7 @@ casper
 .start()
 .then(function(){
   this.each(tempData, function(self, item){
-    if(fs.exists('http://34.207.251.58:9000/'+item.Class+'/'+item.GithubName+'/testbuilder/index.html')){
+    if(fs.exists('./server/client/ClassContainer/'+item.Class+'/'+item.GithubName+'/testbuilder/index.html')){
       self.thenOpen('http://34.207.251.58:9000/'+item.Class+'/'+item.GithubName+'/testbuilder/index.html', function(){
         this.wait(5000, function() {
           var passedTests = this.evaluate(function(){
