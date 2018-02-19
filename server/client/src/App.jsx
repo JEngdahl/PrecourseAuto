@@ -11,6 +11,7 @@ import ClassList from "./ClassList";
 import CohortList from "./CohortList";
 import Cohort from "./Cohort";
 import Student from "./Student";
+import AddClass from "./AddClass.jsx"
 
 
 // import Stuff from "./Stuff";
@@ -28,6 +29,7 @@ class App extends Component {
         <BrowserRouter >
           <Switch>
             <Route exact path="/" component={ClassList}/>
+            <Route exact path="/add" component={AddClass}/>
             <Route exact path="/:campus" component={CohortList}/>
             <Route exact path="/:campus/:cohort" component={Cohort}/>
             <Route exact path="/:campus/:cohort/:student" component={Student}/>

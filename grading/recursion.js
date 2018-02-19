@@ -15,6 +15,7 @@ casper
 .start()
 .then(function(){
   this.each(tempData, function(self, item){
+    if(fs.exists('./server/client/ClassContainer/'+item.Class+'/'+item.GithubName+'/recursion/SpecRunner.html')){
       self.thenOpen('http://34.207.251.58:9000/'+item.Class+'/'+item.GithubName+'/recursion/SpecRunner.html', function(){
         var passedTests = this.evaluate(function(){
           return document.querySelector("#mocha-stats > li.passes > em").textContent;
@@ -30,6 +31,10 @@ casper
         item.Recursion = passedTests;
         this.echo('Recursion: ' + item.FullName +", Passed = "+passedTests+"/4")
       },3000)
+    } else {
+      item.Recursion = null;
+      this.echo('Recursion: ' + item.FullName +", NULL")
+    }
   })
 })
 .then(function(){

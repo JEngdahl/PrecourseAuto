@@ -44,6 +44,9 @@ class ClassList extends Component {
                   <li className="campus">{e}</li>
                 </NavLink>
               )}
+            <NavLink to={"/add"}>
+              <li className="campus">+</li>
+            </NavLink>
           </ul>
         </div>
     )

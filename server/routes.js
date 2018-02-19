@@ -107,9 +107,12 @@ module.exports = function(app,db,compare) {
   app.post('/api/addclass',function(req, res){
     //console.log(req.body)
     var r = req.body
+    r.names = r.names.split("\n")
+    r.handles = r.handles.split("\n")
+    //console.log(r)
     r.names.forEach(function(e,i){
       console.log(e)
-      db.query("INSERT INTO precourse.Students (`FullName`,`GithubName`,`Class`) VALUES ('"+e+"','"+r.handles[i]+"','"+r.class+"');",function(){
+      db.query("INSERT INTO precourse.Students (`FullName`,`GithubName`,`Class`) VALUES ('"+e+"','"+r.handles[i]+"','"+r.cohort+"');",function(){
         if(i === r.names.length - 1){
       	  res.send("done")
       	}
