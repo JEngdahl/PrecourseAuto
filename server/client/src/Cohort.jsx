@@ -87,7 +87,8 @@ class Cohort extends Component {
         <ul className="studentRowContainer">
           {filteredStudents.map(e =>
               <NavLink to={this.props.location.pathname+"/"+e.GithubName}>
-                <li className="studentRow" style={{backgroundColor: getGreenToRed([e.RecursionPercent,e.TestbuilderPercent,e.KoansPercent,e.UnderbarPercent])[0]}}>
+                <li className="studentRow" >
+                  <div className="dataPoint indicator" style={{backgroundColor: getGreenToRed([e.RecursionPercent,e.TestbuilderPercent,e.KoansPercent,e.UnderbarPercent])[0]}}></div>
                   <div className="dataPoint" >{e.FullName || "N/A"}</div>
                   <div className="dataPoint">Total: %{Math.round(getGreenToRed([e.RecursionPercent,e.TestbuilderPercent,e.KoansPercent,e.UnderbarPercent])[1])}</div>
                   <div className="dataPoint" >Koans: %{Math.round(e.KoansPercent) || "N/A"}</div>

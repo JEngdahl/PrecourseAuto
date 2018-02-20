@@ -5,16 +5,9 @@ module.exports = function(app,db,compare) {
     res.sendFile(__dirname+'/client/build/index.html')
   })
 
-
-  app.get('/api/classlist', function(req, res){
-    db.query("SELECT DISTINCT class FROM precourse.Students;",function(err,resp){
-      if(err){
-        res.send(err)
-      }
-      res.send(resp.map(e=>e.class).join(" "))
-    })
+  app.get('/add',function(req,res){
+    res.sendFile(__dirname+'/client/build/index.html')
   })
-
 
   app.get('/api/bashclassnames', function(req, res){
     db.query("SELECT DISTINCT GithubName FROM precourse.Students WHERE class='"+req.query.c+"';",function(err,resp){
@@ -103,6 +96,26 @@ module.exports = function(app,db,compare) {
     }
   })
 
+  app.get('/api/classlist', function(req, res){
+    db.query("SELECT DISTINCT class FROM precourse.Students;",function(err,resp){
+      if(err){
+        res.send(err)
+      }
+      res.send(resp.map(e=>e.class).join(" "))
+    })
+  })
+
+  app.get('/:campus',function(req,res){
+    res.sendFile(__dirname+'/client/build/index.html')
+  })
+
+  app.get('/:campus/:cohort',function(req,res){
+    res.sendFile(__dirname+'/client/build/index.html')
+  })
+
+  app.get('/:campus/:cohort/:student',function(req,res){
+    res.sendFile(__dirname+'/client/build/index.html')
+  })
 
   app.post('/api/addclass',function(req, res){
     //console.log(req.body)
