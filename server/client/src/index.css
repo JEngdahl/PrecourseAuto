@@ -82,3 +82,13 @@ body {
   width: 25px;
   float: left;
 }
+.studentWorkWrapper{
+  margin-top: 35px;
+  display: flex;
+  border: 1px solid #000;
+  box-shadow: -1px 10px 5px grey;
+  padding-top: 3px;
+}
+.notesWrapper{
+  padding-left: 245px;
+}

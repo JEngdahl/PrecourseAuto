@@ -65,7 +65,7 @@ class Cohort extends Component {
   componentDidMount(){
     var p = this.props.location.pathname
     p = p.split("/")
-    axios.get("http://34.207.251.58:3000/api/class?c="+p[2])
+    axios.get("http://localhost:3000/api/class?c="+p[2])
     .then(res => {
       var students = res.data
       this.setState({students})
@@ -95,7 +95,18 @@ class Cohort extends Component {
                   <div className="dataPoint" >Testbuilder: %{Math.round(e.TestbuilderPercent) || "N/A"}</div>
                   <div className="dataPoint" >Underbar: %{Math.round(e.UnderbarPercent) || "N/A"}</div>
                   <div className="dataPoint" >Recursion: %{Math.round(e.RecursionPercent) || "N/A"}</div>
-                  <div className="dataPoint" >Twittler</div>
+                  <div className="dataPoint" >
+                    { (()=>{
+                        if(e.UnderbarTwo){
+                          return "Twittler: ✅"
+                        }
+                        else{
+                          return "Twittler: ❌"
+                        }
+                      })()
+
+                    }
+                  </div>
                 </li>
               </NavLink>
           )}

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import {Polar} from 'react-chartjs-2';
 import StudentWork from "./StudentWork"
+import StudentNotes from "./StudentNotes"
 
 var chart = {
   datasets: [{
@@ -41,10 +42,10 @@ class Student extends Component {
     };
   }
 
-  componentDidMount(){
+  componentWillMount(){
     var p = this.props.location.pathname
     p = p.split("/")
-    axios.get("http://34.207.251.58:3000/api/student?s="+p[3])
+    axios.get("http://localhost:3000/api/student?s="+p[3])
     .then(res => {
       var student = res.data[0];
       this.setState({student});
@@ -64,8 +65,11 @@ class Student extends Component {
           <div classname="spacer">
             <Polar className="studentChart" width={500} height={360} data={this.state.chartData}/>
           </div>
-          <StudentWork student={this.state.student}/>
-        </div>
+          <div className="studentWorkWrapper">
+            <StudentWork student={this.state.student}/>
+            <StudentNotes student={this.state.student}/>
+          </div>
+      </div>
       </div>
     )
   }
