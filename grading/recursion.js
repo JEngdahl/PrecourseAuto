@@ -16,7 +16,7 @@ casper
 .then(function(){
   this.each(tempData, function(self, item){
     if(fs.exists('./server/client/ClassContainer/'+item.Class+'/'+item.GithubName+'/recursion/SpecRunner.html')){
-      self.thenOpen('http://localhost:9000/'+item.Class+'/'+item.GithubName+'/recursion/SpecRunner.html', function(){
+      self.thenOpen('http://34.207.251.58:9000/'+item.Class+'/'+item.GithubName+'/recursion/SpecRunner.html', function(){
         var passedTests = this.evaluate(function(){
           return document.querySelector("#mocha-stats > li.passes > em").textContent;
         });

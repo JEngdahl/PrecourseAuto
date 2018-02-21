@@ -18,7 +18,7 @@ this.echo("start")
   this.each(tempData, function(self, item){
     this.echo(item)
     if(fs.exists('./server/client/ClassContainer/'+item.Class+'/'+item.GithubName+'/javascript-koans/KoansRunner.html')){
-      self.thenOpen('http://localhost:9000/'+item.Class+'/'+item.GithubName+'/javascript-koans/KoansRunner.html', function(){
+      self.thenOpen('http://34.207.251.58:9000/'+item.Class+'/'+item.GithubName+'/javascript-koans/KoansRunner.html', function(){
         this.wait(1000, function() {
           var passedTests = this.evaluate(function(){
             return document.querySelector("body > div > div.progress > span:nth-child(1) > div > div > div.completion > div:nth-child(2) > span.value").textContent.split("/")[0];
