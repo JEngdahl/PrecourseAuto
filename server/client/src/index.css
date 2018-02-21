@@ -92,3 +92,6 @@ body {
 .notesWrapper{
   padding-left: 245px;
 }
+.left{
+  float: left;
+}
