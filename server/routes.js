@@ -44,7 +44,7 @@ module.exports = function(app,db,compare) {
       res.send(resp.map(function(el){
 
         el.KoansPercent = Math.round(convertToPercentage(54,el.Koans))
-        el.UnderbarPercent = Math.round(convertToPercentage(128,el.UnderbarOne-45))
+        el.UnderbarPercent = Math.round(convertToPercentage(71,el.UnderbarOne-57))
         el.RecursionPercent = Math.round(convertToPercentage(2,el.Recursion))
         if(el.Testbuilder > 3299){
           el.TestbuilderPercent = 100;
