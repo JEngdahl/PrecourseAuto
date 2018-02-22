@@ -12,10 +12,7 @@ import CohortList from "./CohortList";
 import Cohort from "./Cohort";
 import Student from "./Student";
 import AddClass from "./AddClass.jsx"
-
-
-// import Stuff from "./Stuff";
-// import Contact from "./Contact";
+import Err from "./Err.jsx"
 
 class App extends Component {
   render() {
@@ -33,6 +30,7 @@ class App extends Component {
             <Route exact path="/:campus" component={CohortList}/>
             <Route exact path="/:campus/:cohort" component={Cohort}/>
             <Route exact path="/:campus/:cohort/:student" component={Student}/>
+            <Route path="*" component={Err}/>
           </Switch>
         </BrowserRouter >
 

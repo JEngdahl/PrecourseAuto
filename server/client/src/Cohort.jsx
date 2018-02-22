@@ -91,7 +91,7 @@ class Cohort extends Component {
                   <div className="dataPoint indicator" style={{backgroundColor: getGreenToRed([e.RecursionPercent,e.TestbuilderPercent,e.KoansPercent,e.UnderbarPercent])[0]}}></div>
                   <div className="dataPoint left" >{e.FullName.slice(0,20) || "N/A"}</div>
                   <div className="dataPoint">Total: %{Math.round(getGreenToRed([e.RecursionPercent,e.TestbuilderPercent,e.KoansPercent,e.UnderbarPercent])[1])}</div>
-                  <div className="dataPoint" >Koans: %{Math.round(e.KoansPercent) || "N/A"}</div>
+                  <div className="dataPoint" >Koans: %{Math.round(e.KoansPercent*2) || "N/A"}</div>
                   <div className="dataPoint" >Testbuilder: %{Math.round(e.TestbuilderPercent) || "N/A"}</div>
                   <div className="dataPoint" >Underbar: %{Math.round(e.UnderbarPercent) || "N/A"}</div>
                   <div className="dataPoint" >Recursion: %{Math.round(e.RecursionPercent) || "N/A"}</div>
