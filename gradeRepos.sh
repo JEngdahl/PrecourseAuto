@@ -8,7 +8,6 @@ echo $TEST
 RESPONSE=`$TEST`
 
 echo module.exports = $RESPONSE > data.js
-rm -rf ./server/client/ClassContainer/*
 
 CLASSLISTGET="curl http://34.207.251.58:3000/api/classlist"
 echo $CLASSLISTGET
@@ -19,6 +18,7 @@ for i in $CLASSLIST; do
   STUDENTLIST=`$STUDENTLISTGET`
   for j in $STUDENTLIST; do
     echo $j
+    rm -rf ./server/client/ClassContainer/$i
     git clone --quiet https://github.com/$j/$i-recursion ./server/client/ClassContainer/$i/$j/recursion
     git clone --quiet https://github.com/$j/$i-twittler ./server/client/ClassContainer/$i/$j/twittler
     git clone --quiet https://github.com/$j/$i-testbuilder ./server/client/ClassContainer/$i/$j/testbuilder
