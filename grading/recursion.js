@@ -30,7 +30,7 @@ casper
 
         item.Recursion = passedTests;
         this.echo('Recursion: ' + item.FullName +", Passed = "+passedTests+"/4")
-      },3000)
+      },5000)
     } else {
       item.Recursion = null;
       this.echo('Recursion: ' + item.FullName +", NULL")
