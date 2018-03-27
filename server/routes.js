@@ -193,4 +193,16 @@ module.exports = function(app,db,compare) {
     })
     res.send("all good")
     })
+
+    app.post('/api/updateone', function(req, res){
+      var r = JSON.parse(req.body.data);
+        db.query("UPDATE precourse.Students SET "+r.repoName+" = "+r.repoScore+" WHERE GithubName ="+r.GithubName+";",function(err){
+          if(err){
+            console.log(err)
+          } else {
+            console.log(r)
+          }
+        });
+      res.send("all good")
+      })
 }
