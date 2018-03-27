@@ -195,7 +195,7 @@ module.exports = function(app,db,compare) {
     })
 
     app.post('/api/updateone', function(req, res){
-      var r = JSON.parse(req.body.data);
+      var r = JSON.parse(req.body);
         db.query("UPDATE precourse.Students SET "+r.repoName+" = "+r.repoScore+" WHERE GithubName ="+r.GithubName+";",function(err){
           if(err){
             console.log(err)
