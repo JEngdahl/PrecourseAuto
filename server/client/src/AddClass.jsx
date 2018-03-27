@@ -18,7 +18,7 @@ class AddClass extends Component {
 
   addClass(){
     console.log("Firing the Missile")
-    axios.post('http://34.207.251.58:3000/api/addclass', {
+    axios.post('http://35.173.188.239:3000/api/addclass', {
     ...this.state
   })
   .then(function (response) {

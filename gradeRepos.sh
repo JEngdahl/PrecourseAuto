@@ -2,18 +2,18 @@
 rm data.js
 rm sendData.js
 touch data.js sendData.js
-TEST="curl http://34.207.251.58:3000/api/class?c=all"
+TEST="curl http://35.173.188.239:3000/api/class?c=all"
 echo $TEST
 
 RESPONSE=`$TEST`
 
 echo module.exports = $RESPONSE > data.js
 
-CLASSLISTGET="curl http://34.207.251.58:3000/api/classlist"
+CLASSLISTGET="curl http://35.173.188.239:3000/api/classlist"
 echo $CLASSLISTGET
 CLASSLIST=`$CLASSLISTGET`
 for i in $CLASSLIST; do
-  STUDENTLISTGET="curl http://34.207.251.58:3000/api/bashclassnames?c=$i"
+  STUDENTLISTGET="curl http://35.173.188.239:3000/api/bashclassnames?c=$i"
   echo $STUDENTLISTGET
   STUDENTLIST=`$STUDENTLISTGET`
   for j in $STUDENTLIST; do
@@ -36,6 +36,6 @@ done
 casperjs grading/koans.js && casperjs grading/recursion.js && casperjs grading/testbuilder.js && casperjs grading/underbar.js
 
 value=$(<sendData.js)
-curl --data "data=$value" http://34.207.251.58:3000/api/updatebyhandle
+curl --data "data=$value" http://35.173.188.239:3000/api/updatebyhandle
 echo $(date) >> runtimes.txt
 #curl -X POST http://34.207.251.58:1337/api/updatebyhandle -H 'Cache-Control: no-cache' -H 'Content-Type: application/json' -d '$value'

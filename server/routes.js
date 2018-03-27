@@ -59,13 +59,45 @@ module.exports = function(app,db,compare) {
 
   app.get('/api/class', function(req, res){
     console.log(req.query.c)
+    function convertToPercentage(top,current){
+     return (current / top) * 100
+    }
     if(req.query.c === "all"){
       db.query("SELECT * FROM precourse.Students;",function(err,resp){
         if(err){
           res.send(err)
         }
-        console.log(resp)
-        res.send(resp)
+        if(!resp){
+          res.send("404")
+        }
+        if(resp.length){
+          res.send(resp.map(function(el){
+            el.KoansPercent = Math.round(convertToPercentage(27,el.Koans))
+
+            el.UnderbarPercent = Math.round(convertToPercentage(71,el.UnderbarOne-57))
+            if(el.UnderbarPercent < 0){
+              el.UnderbarPercent = 0;
+            }
+
+            el.RecursionPercent = Math.round(convertToPercentage(2,el.Recursion))
+
+            if(el.RecursionPercent > 100){
+              el.RecursionPercent = 100;
+            }
+
+            if(el.Testbuilder > 3299){
+              el.TestbuilderPercent = 100;
+            } else {
+              el.TestbuilderPercent = Math.round(convertToPercentage(3299,el.Testbuilder))
+            }
+
+            el.Overall = ((el.KoansPercent || 0) + (el.RecursionPercent || 0) + (el.TestbuilderPercent || 0) + (el.RecursionPercent || 0)) / 4
+
+            return el
+          }));
+        } else {
+          res.send("404")
+        }
       })
     } else {
       function convertToPercentage(top,current){
@@ -80,12 +112,13 @@ module.exports = function(app,db,compare) {
         }
         if(resp.length){
           res.send(resp.map(function(el){
-            el.KoansPercent = Math.round(convertToPercentage(54,el.Koans))
-            el.UnderbarPercent = Math.round(convertToPercentage(128,el.UnderbarOne))
-            el.TestbuilderPercent = Math.round(convertToPercentage(3300,el.Testbuilder))
+            el.KoansPercent = Math.round(convertToPercentage(27,el.Koans))
+            el.UnderbarPercent = Math.round(convertToPercentage(71,el.UnderbarOne-57))
             el.RecursionPercent = Math.round(convertToPercentage(2,el.Recursion))
-            if(el.Testbuilder > 3300){
+            if(el.Testbuilder > 3299){
               el.TestbuilderPercent = 100;
+            } else {
+              el.TestbuilderPercent = Math.round(convertToPercentage(3299,el.Testbuilder))
             }
             return el
           }));

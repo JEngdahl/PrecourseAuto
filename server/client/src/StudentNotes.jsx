@@ -25,7 +25,7 @@ class StudentNotes extends Component {
     this.setState({
       [name]: value
     });
-    axios.post("http://34.207.251.58:3000/api/updateone", {
+    axios.post("http://35.173.188.239:3000/api/updateone", {
         field: "UnderbarTwo",
         value: value,
         id: this.props.student.id
