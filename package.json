@@ -33,6 +33,12 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.0",
     "sql": "^0.78.0",
-    "strip-comments": "^0.4.4"
+    "strip-comments": "^0.4.4",
+    "chai": "^4.1.2",
+    "cheerio": "^1.0.0-rc.2",
+    "mocha": "^5.0.5",
+    "request": "^2.85.0",
+    "request-promise": "^4.2.2",
+    "underscore": "^1.8.3"
   }
 }
