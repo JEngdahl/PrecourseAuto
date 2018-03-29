@@ -38,7 +38,7 @@ function postingMochaReporter(runner) {
     };
     
     if (passes > 0) {
-        console.log(yay, options.body)
+        console.log('yay', options.body)
     // rp(options)
     //     .then(function (parsedBody) {
     //         // POST succeeded...
