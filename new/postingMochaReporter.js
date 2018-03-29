@@ -38,20 +38,20 @@ function postingMochaReporter(runner) {
     };
     
     if (passes > 0) {
-        console.log(yay, options.body)
-    // rp(options)
-    //     .then(function (parsedBody) {
-    //         // POST succeeded...
-    //         console.log('sending', options.body)
-    //         console.log(parsedBody)
-    //         process.exit(failures);
+        console.log('yay', options.body)
+    rp(options)
+        .then(function (parsedBody) {
+            // POST succeeded...
+            console.log('sending', options.body)
+            console.log(parsedBody)
+            process.exit(failures);
 
-    //     })
-    //     .catch(function (err) {
-    //         console.log('lol you done failed', err)
-    //         process.exit(failures);
+        })
+        .catch(function (err) {
+            console.log('lol you done failed', err)
+            process.exit(failures);
 
-    //     });
+        });
 
     } else {
         process.exit(failures);

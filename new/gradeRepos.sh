@@ -25,8 +25,17 @@ testRecursion() {
 
 }
 
+testTestbuilder() {
+  echo "in testTestbuilder"
+  echo $1
+  cat "$1/detectNetwork.js" >> "$1/test.js"
+  cat "./graders/testbuilderTest.js" >> "$1/test.js"
+  cat "$1/detectNetwork.test.js" >> "$1/test.js"
+  mocha "$1/test.js" -R postingMochaReporter.js $2 testbuilder
+}
+
 CLASSLISTGET="curl http://35.173.188.239:3000/api/classlist"
-echo $CLASSLISTGET
+echo $CLASSLISTGET 
 CLASSLIST=`$CLASSLISTGET`
 for i in $CLASSLIST; do
   STUDENTLISTGET="curl http://35.173.188.239:3000/api/bashclassnames?c=$i"
@@ -37,7 +46,7 @@ for i in $CLASSLIST; do
     rm -rf ./server/client/ClassContainer/$i/$j
     git clone --quiet https://github.com/$j/$i-recursion ./server/client/ClassContainer/$i/$j/recursion
     # git clone --quiet https://github.com/$j/$i-twittler ./server/client/ClassContainer/$i/$j/twittler
-    # git clone --quiet https://github.com/$j/$i-testbuilder ./server/client/ClassContainer/$i/$j/testbuilder
+    git clone --quiet https://github.com/$j/$i-testbuilder ./server/client/ClassContainer/$i/$j/testbuilder
     # git clone --quiet https://github.com/$j/$i-javascript-koans ./server/client/ClassContainer/$i/$j/javascript-koans
     git clone --quiet https://github.com/$j/$i-underbar ./server/client/ClassContainer/$i/$j/underbar
 
@@ -46,6 +55,9 @@ for i in $CLASSLIST; do
     fi
     if [ -e ./server/client/ClassContainer/$i/$j/recursion/src/getElementsByClassName.js ]; then
         testRecursion "./server/client/ClassContainer/$i/$j/recursion" $j 
+    fi
+    if [ -e ./server/client/ClassContainer/$i/$j/testbuilder/detectNetwork.js ]; then
+        testTestbuilder "./server/client/ClassContainer/$i/$j/testbuilder" $j 
     fi
 
   done
