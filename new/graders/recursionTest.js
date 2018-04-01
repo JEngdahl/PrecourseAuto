@@ -1,6 +1,11 @@
 // okay so the approach here for getElements is we are using cheerio instead of jquery.
 
-const expect = require('chai').expect;
+var chai = require('chai');
+var expect = chai.expect;
+var sinon = require("sinon");
+var sinonChai = require("sinon-chai");
+chai.use(sinonChai);
+
 const _ = require('underscore')
 const cheerio = require('cheerio')
 const $ = cheerio.load(
@@ -18,7 +23,8 @@ const $ = cheerio.load(
 // fake document object with body with cheerio and getElementsByClassName for the test
 const document = {};
 document.body = $('body');
-document.getElementsByClassName = function (className/*START SOLUTION*/, element/*END SOLUTION*/) {
+
+const THEgetElementsByClassName = function (className/*START SOLUTION*/, element/*END SOLUTION*/) {
     // your code here
     /*START SOLUTION*/
     element = element || document.body;
@@ -56,7 +62,7 @@ describe('getElementsByClassName', function () {
             $('body').append($rootElement);
 
             var result = getElementsByClassName('targetClassName');
-            var expectedNodeList = document.getElementsByClassName('targetClassName');
+            var expectedNodeList = THEgetElementsByClassName('targetClassName');
             var expectedArray = Array.prototype.slice.apply(expectedNodeList);
             var equality = _.isEqual(result, expectedArray); // why can't we use `===` here?
             expect(equality).to.equal(true);
@@ -204,7 +210,19 @@ unparseableStrings = [
 
 // stringifyJSON test from /spec
 describe('stringifyJSON', function () {
+    
+      
+      
+
+
     it('should match the result of calling JSON.stringify', function () {
+
+        //prevent smartasses first, make sure not using JSON.stringify
+        sinon.spy(JSON,'stringify');
+        stringifyJSON({lol:"lol"});
+        expect(JSON.stringify.called).to.equal(false);
+        JSON.stringify.restore();
+
 
         stringifiableObjects.forEach(function (test) {
             var expected = JSON.stringify(test);
@@ -234,6 +252,14 @@ describe('stringifyJSON', function () {
 describe('parseJSON', function () {
 
     it('should match the result of calling JSON.parse', function () {
+
+        //smartass prevent
+        sinon.spy(JSON,'parse');
+        stringifyJSON({lol:"lol"});
+        expect(JSON.parse.called).to.equal(false);
+        JSON.parse.restore();
+
+
         parseableStrings.forEach(function (test) {
             var result = parseJSON(test);
             var expected = JSON.parse(test);
@@ -244,6 +270,13 @@ describe('parseJSON', function () {
     });
 
     it('should throw an error for invalid stringified JSON', function () {
+        
+        //smartass prevent
+        sinon.spy(JSON,'parse');
+        stringifyJSON({lol:"lol"});
+        expect(JSON.parse.called).to.equal(false);
+        JSON.parse.restore();
+
         unparseableStrings.forEach(function (test) {
             var fn = function () {
                 parseJSON(test);

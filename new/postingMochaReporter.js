@@ -21,11 +21,11 @@ function postingMochaReporter(runner) {
   });
 
   runner.on('end', function(){
-    console.log('woot!: %d/%d', passes, passes + failures);
+    console.log('woot! mocha: %d/%d', passes, passes + failures);
     
     
-    if (passes > 0) {
-        post(passes, process.exit(failures))
+    if (passes + failures > 0) {
+        post(passes,() => process.exit(failures))
     } else {
         process.exit(failures);
     }
