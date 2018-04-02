@@ -1,41 +1,67 @@
-#!/bin/bash
-rm data.js
-rm sendData.js
-touch data.js sendData.js
-TEST="curl http://35.173.188.239:3000/api/class?c=all"
-echo $TEST
+#!/usr/bin/env bash
 
-RESPONSE=`$TEST`
+testUnderBar() {
+  echo "in testUnderbar"
+  echo $1
+  echo 'var window = global;' >> "$1/src/underbarTestOne.js" 
+  cat "$1/src/underbar.js" >> "$1/src/underbarTestOne.js"
+  cat "./graders/underbarTestOne.js" >> "$1/src/underbarTestOne.js" 
+  mocha "$1/src/underbarTestOne.js" -R postingMochaReporter.js $2 UnderbarOne
 
-echo module.exports = $RESPONSE > data.js
+  echo 'var window = global;' >> "$1/src/underbarTestTwo.js" 
+  cat "$1/src/underbar.js" >> "$1/src/underbarTestTwo.js"
+  cat "./graders/underbarTestTwo.js" >> "$1/src/underbarTestTwo.js" 
+  mocha "$1/src/underbarTestTwo.js" -R postingMochaReporter.js $2 UnderbarTwo
+}
+
+testRecursion() {
+  echo "in testRecursion"
+  echo $1
+  cat "$1/src/getElementsByClassName.js" >> "$1/src/tester.js"
+  cat "$1/src/parseJSON.js" >> "$1/src/tester.js"
+  cat "$1/src/stringifyJSON.js" >> "$1/src/tester.js"
+  cat "./graders/recursionTest.js" >> "$1/src/tester.js"
+  mocha "$1/src/tester.js" -R postingMochaReporter.js $2 Recursion
+
+}
+
+testTestbuilder() {
+  echo "in testTestbuilder"
+  echo $1
+  cat "$1/detectNetwork.js" >> "$1/test.js"
+  cat "./graders/testbuilderTest.js" >> "$1/test.js"
+  cat "$1/detectNetwork.test.js" >> "$1/test.js"
+  mocha "$1/test.js" -R postingMochaReporter.js $2 testbuilder
+}
 
 CLASSLISTGET="curl http://35.173.188.239:3000/api/classlist"
-echo $CLASSLISTGET
+echo $CLASSLISTGET 
 CLASSLIST=`$CLASSLISTGET`
 for i in $CLASSLIST; do
   STUDENTLISTGET="curl http://35.173.188.239:3000/api/bashclassnames?c=$i"
-  echo $STUDENTLISTGET
-  STUDENTLIST=`$STUDENTLISTGET`
+       echo $STUDENTLISTGET
+       STUDENTLIST=`$STUDENTLISTGET`
   for j in $STUDENTLIST; do
     echo $j
     rm -rf ./server/client/ClassContainer/$i/$j
     git clone --quiet https://github.com/$j/$i-recursion ./server/client/ClassContainer/$i/$j/recursion
-    git clone --quiet https://github.com/$j/$i-twittler ./server/client/ClassContainer/$i/$j/twittler
+    # git clone --quiet https://github.com/$j/$i-twittler ./server/client/ClassContainer/$i/$j/twittler
     git clone --quiet https://github.com/$j/$i-testbuilder ./server/client/ClassContainer/$i/$j/testbuilder
-    git clone --quiet https://github.com/$j/$i-javascript-koans ./server/client/ClassContainer/$i/$j/javascript-koans
+    # git clone --quiet https://github.com/$j/$i-javascript-koans ./server/client/ClassContainer/$i/$j/javascript-koans
     git clone --quiet https://github.com/$j/$i-underbar ./server/client/ClassContainer/$i/$j/underbar
-    node addCounter.js $i $j
-    node addLocalStorage.js $i $j
-    if [[ -e ./server/client/ClassContainer/$i/$j/underbar/src/underbar.js ]]; then
-       echo 'Babel underbar.js ES6 => ES5'
-       babel ./server/client/ClassContainer/$i/$j/underbar/src/underbar.js --out-file ./server/client/ClassContainer/$i/$j/underbar/src/underbar.js
+
+    if [ -e ./server/client/ClassContainer/$i/$j/underbar/src/underbar.js ]; then
+        testUnderBar "./server/client/ClassContainer/$i/$j/underbar" $j 
     fi
+    if [ -e ./server/client/ClassContainer/$i/$j/recursion/src/getElementsByClassName.js ]; then
+        testRecursion "./server/client/ClassContainer/$i/$j/recursion" $j 
+    fi
+    if [ -e ./server/client/ClassContainer/$i/$j/testbuilder/detectNetwork.js ]; then
+        testTestbuilder "./server/client/ClassContainer/$i/$j/testbuilder" $j 
+    fi
+
   done
 done
-# casperjs grading.js
-casperjs grading/koans.js && casperjs grading/recursion.js && casperjs grading/testbuilder.js && casperjs grading/underbar.js
 
-value=$(<sendData.js)
-curl --data "data=$value" http://35.173.188.239:3000/api/updatebyhandle
+
 echo $(date) >> runtimes.txt
-#curl -X POST http://34.207.251.58:1337/api/updatebyhandle -H 'Cache-Control: no-cache' -H 'Content-Type: application/json' -d '$value'
