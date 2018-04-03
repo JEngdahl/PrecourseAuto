@@ -154,13 +154,13 @@ module.exports = function(app,db,compare) {
     res.sendFile(__dirname+'/client/build/index.html')
   })
 
-  app.post('/api/updateone', function(req, res){
-    var r = req.body
-    console.log(r);
-    db.query("UPDATE precourse.Students SET "+r.field+"="+r.value+" WHERE id="+r.id+";",function(){
-      res.send("updated")
-    })
-  })
+  // app.post('/api/updateone', function(req, res){
+  //   var r = req.body
+  //   console.log(r);
+  //   db.query("UPDATE precourse.Students SET "+r.field+"="+r.value+" WHERE id="+r.id+";",function(){
+  //     res.send("updated")
+  //   })
+  // })
 
   app.post('/api/addclass',function(req, res){
     //console.log(req.body)
