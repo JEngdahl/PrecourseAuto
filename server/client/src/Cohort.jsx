@@ -14,7 +14,7 @@ function getGreenToRed(arr){
     return a
   },0)
 
-  var percent = nonNull / 4;
+  var percent = nonNull / 5;
   var r = percent<50 ? 255 : Math.round(255-(percent*2-100)*255/100);
   var g = percent>50 ? 255 : Math.round((percent*2)*255/100);
   return ['rgb('+r+','+g+',0)',percent];
@@ -88,16 +88,16 @@ class Cohort extends Component {
           {filteredStudents.map(e =>
               <NavLink to={this.props.location.pathname+"/"+e.GithubName}>
                 <li className="studentRow" >
-                  <div className="dataPoint indicator" style={{backgroundColor: getGreenToRed([e.RecursionPercent,e.TestbuilderPercent,e.KoansPercent,e.UnderbarPercent])[0]}}></div>
+                  <div className="dataPoint indicator" style={{backgroundColor: getGreenToRed([e.RecursionPercent,e.TestbuilderPercent,e.KoansPercent,e.UnderbarOnePercent,e.UnderbarTwoPercent])[0]}}></div>
                   <div className="dataPoint left" >{e.FullName.slice(0,20) || "N/A"}</div>
-                  <div className="dataPoint">Total: %{Math.round(getGreenToRed([e.RecursionPercent,e.TestbuilderPercent,e.KoansPercent,e.UnderbarPercent])[1])}</div>
-                  <div className="dataPoint" >Koans: %{Math.round(e.KoansPercent * 2) || "N/A"}</div>
+                  <div className="dataPoint">Total: %{Math.round(getGreenToRed([e.RecursionPercent,e.TestbuilderPercent,e.KoansPercent,e.UnderbarOnePercent,e.UnderbarTwoPercent])[1])}</div>
+                  <div className="dataPoint" >Koans: %{Math.round(e.KoansPercent) || "N/A"}</div>
                   <div className="dataPoint" >Testbuilder: %{Math.round(e.TestbuilderPercent) || "N/A"}</div>
                   <div className="dataPoint" >Underbar: %{Math.round(e.UnderbarPercent) || "N/A"}</div>
                   <div className="dataPoint" >Recursion: %{Math.round(e.RecursionPercent) || "N/A"}</div>
                   <div className="dataPoint" >
                     { (()=>{
-                        if(e.UnderbarTwo){
+                        if(e.twittler){
                           return "Twittler: ✅"
                         }
                         else{

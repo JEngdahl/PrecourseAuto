@@ -16,14 +16,16 @@ var chart = {
       '#DE7C00',
       '#861F41',
       '#DC4405',
-      '#00B398'
+      '#00B398',
+      '#522555'
     ],
     label: '' // for legend
   }],
   labels: [
     'Koans',
     'Testbuilder',
-    'Underbar',
+    'Underbar One',
+    'Underbar Two',
     'Recursion'
   ],
   // options: {
@@ -50,7 +52,7 @@ class Student extends Component {
       var student = res.data[0];
       this.setState({student});
       var chartData = {...this.state.chartData};
-      chartData.datasets["0"].data = [res.data[0].KoansPercent,res.data[0].TestbuilderPercent,res.data[0].UnderbarPercent,res.data[0].RecursionPercent];
+      chartData.datasets["0"].data = [res.data[0].KoansPercent,res.data[0].TestbuilderPercent,res.data[0].UnderbarOnePercent,res.data[0].UnderbarTwoPercent,res.data[0].RecursionPercent];
       chartData.datasets["0"].label = res.data[0].FullName;
       this.setState({chartData})
        console.log(this.state)
