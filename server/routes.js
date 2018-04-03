@@ -154,13 +154,13 @@ module.exports = function(app,db,compare) {
     res.sendFile(__dirname+'/client/build/index.html')
   })
 
-  app.post('/api/updateone', function(req, res){
-    var r = req.body
-    console.log(r);
-    db.query("UPDATE precourse.Students SET "+r.field+"="+r.value+" WHERE id="+r.id+";",function(){
-      res.send("updated")
-    })
-  })
+  // app.post('/api/updateone', function(req, res){
+  //   var r = req.body
+  //   console.log(r);
+  //   db.query("UPDATE precourse.Students SET "+r.field+"="+r.value+" WHERE id="+r.id+";",function(){
+  //     res.send("updated")
+  //   })
+  // })
 
   app.post('/api/addclass',function(req, res){
     //console.log(req.body)
@@ -195,15 +195,15 @@ module.exports = function(app,db,compare) {
     })
 
     app.post('/api/updateone', function(req, res){
-      console.log(req)
-      var r = req;
-        db.query("UPDATE precourse.Students SET "+r.repo+" = "+r.score+" WHERE GithubName ="+r.github+";",function(err){
+      var r = req.body;
+      console.log(r)
+        db.query("UPDATE precourse.Students SET "+r.repo+" = "+r.score+" WHERE GithubName ='"+r.github+"';",function(err){
           if(err){
             console.log(err)
           } else {
-            console.log(r)
+            // console.log(r)
+            res.send("all good")
           }
         });
-      res.send("all good")
       })
 }
