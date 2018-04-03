@@ -126,6 +126,16 @@ module.exports = function(app,db,compare) {
     }
   })
 
+  app.get('/api/csvlist',function(req, res){
+    db.query("SELECT * FROM precourse.Students;", function(err, resp){
+      if(err){
+        console.log(err)
+      }
+      console.log(resp[0])
+
+    })
+  })
+
   app.get('/api/classlist', function(req, res){
     db.query("SELECT DISTINCT class FROM precourse.Students;",function(err,resp){
       if(err){
