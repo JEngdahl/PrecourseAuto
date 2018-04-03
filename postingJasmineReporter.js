@@ -15,9 +15,9 @@ function postingJasmineReporter() {
 
 	};
 
-	this.jasmineDone = function () {
+	this.jasmineDone = async function (suitInfo, done) {
 		console.log('woot passed', passed, "out of:", total)
-		post(passed);
+		post(passed, done);
 	};
 
 	
