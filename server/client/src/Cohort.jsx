@@ -97,7 +97,7 @@ class Cohort extends Component {
                   <div className="dataPoint" >Recursion: %{Math.round(e.RecursionPercent) || "N/A"}</div>
                   <div className="dataPoint" >
                     { (()=>{
-                        if(e.twittler){
+                        if(e.Twittler){
                           return "Twittler: ✅"
                         }
                         else{

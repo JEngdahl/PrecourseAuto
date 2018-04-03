@@ -52,7 +52,7 @@ class Student extends Component {
       var student = res.data[0];
       this.setState({student});
       var chartData = {...this.state.chartData};
-      chartData.datasets["0"].data = [res.data[0].KoansPercent,res.data[0].TestbuilderPercent,res.data[0].UnderbarOnePercent,res.data[0].UnderbarTwoPercent,res.data[0].RecursionPercent];
+      chartData.datasets["0"].data = [res.data[0].KoansPercent||0,res.data[0].TestbuilderPercent||0,res.data[0].UnderbarOnePercent||0,res.data[0].UnderbarTwoPercent||0,res.data[0].RecursionPercent||0];
       chartData.datasets["0"].label = res.data[0].FullName;
       this.setState({chartData})
        console.log(this.state)
