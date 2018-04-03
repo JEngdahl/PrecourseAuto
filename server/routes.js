@@ -201,7 +201,7 @@ module.exports = function(app,db,compare) {
           if(err){
             console.log(err)
           } else {
-            console.log(r)
+            // console.log(r)
           }
         });
       res.send("all good")
