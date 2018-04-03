@@ -202,8 +202,8 @@ module.exports = function(app,db,compare) {
             console.log(err)
           } else {
             // console.log(r)
+            res.send("all good")
           }
         });
-      res.send("all good")
       })
 }
