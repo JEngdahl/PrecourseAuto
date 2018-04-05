@@ -48,7 +48,7 @@ class Student extends Component {
   componentWillMount(){
     var p = this.props.location.pathname
     p = p.split("/")
-    axios.get("http://localhost:3000/api/student?s="+p[3])
+    axios.get("http://35.173.188.239:3000/api/student?s="+p[3])
     .then(res => {
       var student = res.data[0];
       var chartData = {...this.state.chartData};
