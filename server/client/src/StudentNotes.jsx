@@ -21,11 +21,12 @@ class StudentNotes extends Component {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
+    console.log(value)
     this.props.student.Twittler = value;
     this.setState({
       [name]: value
     });
-    axios.post("http://35.173.188.239:3000/api/updateone", {
+    axios.post("http://localhost:3000/api/updateone", {
         repo: "Twittler",
         score: value,
         github: this.props.student.GithubName
@@ -54,7 +55,7 @@ class StudentNotes extends Component {
             <input
             name="Twittler"
             type="checkbox"
-            checked={!!this.props.student.Twittler}
+            checked={Boolean(Number(this.props.student.Twittler))}
             onChange={this.handleInputChange} />
           </label>
         </form>

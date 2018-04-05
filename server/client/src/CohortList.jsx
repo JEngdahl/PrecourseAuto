@@ -17,7 +17,7 @@ class ClassList extends Component {
 
   componentDidMount() {
     var p = this.props.location.pathname
-    axios.get("http://35.173.188.239:3000/api/cohorts?c="+p.slice(1,p.length))
+    axios.get("http://localhost:3000/api/cohorts?c="+p.slice(1,p.length))
     .then(res => {
       var cohorts = res.data
       this.setState({cohorts})

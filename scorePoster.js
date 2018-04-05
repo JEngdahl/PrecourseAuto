@@ -10,7 +10,7 @@ function scorePoster(passes,  cb) {
 
 	const options = {
 		method: 'POST',
-		uri: 'http://35.173.188.239:3000/api/updateone',
+		uri: 'http://localhost:3000/api/updateone',
 		body: {
 			score: passes,
 			repo,
@@ -39,7 +39,7 @@ function scorePoster(passes,  cb) {
         //         }
 		//     })
 		// using syncRequest cause Jasmine broke asnyc reporters
-		syncRequest('POST', 'http://35.173.188.239:3000/api/updateone', {json: options.body} )
+		syncRequest('POST', 'http://localhost:3000/api/updateone', {json: options.body} )
 		if (cb) {
 			cb()
 		}
