@@ -54,7 +54,7 @@ class Cohort extends Component {
     }
     if(event.target.value === "percent"){
       students = students.sort(function(a, b) {
-          return getPercent([b.RecursionPercent,b.TestbuilderPercent,b.KoansPercent,b.UnderbarPercent]) - getPercent([a.RecursionPercent,a.TestbuilderPercent,a.KoansPercent,a.UnderbarPercent]);
+          return getPercent([b.RecursionPercent,b.TestbuilderPercent,b.KoansPercent,b.UnderbarOnePercent,b.UnderbarTwoPercent]) - getPercent([a.RecursionPercent,a.TestbuilderPercent,a.KoansPercent,a.UnderbarOnePercent,a.UnderbarTwoPercent]);
       })
     }
 
@@ -93,7 +93,8 @@ class Cohort extends Component {
                   <div className="dataPoint">Total: %{Math.round(getGreenToRed([e.RecursionPercent,e.TestbuilderPercent,e.KoansPercent,e.UnderbarOnePercent,e.UnderbarTwoPercent])[1])}</div>
                   <div className="dataPoint" >Koans: %{Math.round(e.KoansPercent) || "N/A"}</div>
                   <div className="dataPoint" >Testbuilder: %{Math.round(e.TestbuilderPercent) || "N/A"}</div>
-                  <div className="dataPoint" >Underbar: %{Math.round(e.UnderbarPercent) || "N/A"}</div>
+                  <div className="dataPoint" >Underbar One: %{Math.round(e.UnderbarOnePercent) || "N/A"}</div>
+                  <div className="dataPoint" >Underbar Two: %{Math.round(e.UnderbarTwoPercent) || "N/A"}</div>
                   <div className="dataPoint" >Recursion: %{Math.round(e.RecursionPercent) || "N/A"}</div>
                   <div className="dataPoint" >
                     { (()=>{

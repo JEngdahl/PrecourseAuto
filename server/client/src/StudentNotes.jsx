@@ -26,9 +26,9 @@ class StudentNotes extends Component {
       [name]: value
     });
     axios.post("http://35.173.188.239:3000/api/updateone", {
-        field: "Twittler",
-        value: value,
-        id: this.props.student.id
+        repo: "Twittler",
+        score: value,
+        github: this.props.student.GithubName
       })
       .then(function (response) {
         console.log(response);
