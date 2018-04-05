@@ -45,8 +45,8 @@ module.exports = function(app,db,compare) {
 
         el.KoansPercent = Math.round(convertToPercentage(54,el.Koans))
 
-        el.UnderbarOnePercent = Math.round(convertToPercentage(62,el.UnderbarOne))
-        el.UnderbarTwoPercent = Math.round(convertToPercentage(58,el.UnderbarTwo))
+        el.UnderbarOnePercent = Math.round(convertToPercentage(59,el.UnderbarOne))
+        el.UnderbarTwoPercent = Math.round(convertToPercentage(62,el.UnderbarTwo))
         el.RecursionPercent = Math.round(convertToPercentage(2,el.Recursion))
         if(el.RecursionPercent > 100){
           el.RecursionPercent = 100;
@@ -83,8 +83,8 @@ module.exports = function(app,db,compare) {
           res.send(resp.map(function(el){
             el.KoansPercent = Math.round(convertToPercentage(54,el.Koans))
 
-            el.UnderbarOnePercent = Math.round(convertToPercentage(62,el.UnderbarOne))
-            el.UnderbarTwoPercent = Math.round(convertToPercentage(58,el.UnderbarTwo))
+            el.UnderbarOnePercent = Math.round(convertToPercentage(59,el.UnderbarOne))
+            el.UnderbarTwoPercent = Math.round(convertToPercentage(62,el.UnderbarTwo))
             el.RecursionPercent = Math.round(convertToPercentage(2,el.Recursion))
             if(el.RecursionPercent > 100){
               el.RecursionPercent = 100;

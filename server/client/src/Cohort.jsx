@@ -65,7 +65,7 @@ class Cohort extends Component {
   componentDidMount(){
     var p = this.props.location.pathname
     p = p.split("/")
-    axios.get("http://35.173.188.239:3000/api/class?c="+p[2])
+    axios.get("http://localhost:3000/api/class?c="+p[2])
     .then(res => {
       var students = res.data
       this.setState({students})
@@ -91,14 +91,14 @@ class Cohort extends Component {
                   <div className="dataPoint indicator" style={{backgroundColor: getGreenToRed([e.RecursionPercent,e.TestbuilderPercent,e.KoansPercent,e.UnderbarOnePercent,e.UnderbarTwoPercent])[0]}}></div>
                   <div className="dataPoint left" >{e.FullName.slice(0,20) || "N/A"}</div>
                   <div className="dataPoint">Total: %{Math.round(getGreenToRed([e.RecursionPercent,e.TestbuilderPercent,e.KoansPercent,e.UnderbarOnePercent,e.UnderbarTwoPercent])[1])}</div>
-                  <div className="dataPoint" >Koans: %{Math.round(e.KoansPercent) || "N/A"}</div>
-                  <div className="dataPoint" >Testbuilder: %{Math.round(e.TestbuilderPercent) || "N/A"}</div>
-                  <div className="dataPoint" >Underbar One: %{Math.round(e.UnderbarOnePercent) || "N/A"}</div>
-                  <div className="dataPoint" >Underbar Two: %{Math.round(e.UnderbarTwoPercent) || "N/A"}</div>
-                  <div className="dataPoint" >Recursion: %{Math.round(e.RecursionPercent) || "N/A"}</div>
+                  <div className="dataPoint" >Koans: %{Math.round(e.KoansPercent / 2 ) || "N/A"}</div>
+                  <div className="dataPoint" >Testbuilder: %{e.TestbuilderPercent || "N/A"}</div>
+                  <div className="dataPoint" >Underbar One: %{e.UnderbarOnePercent || "N/A"}</div>
+                  <div className="dataPoint" >Underbar Two: %{e.UnderbarTwoPercent || "N/A"}</div>
+                  <div className="dataPoint" >Recursion: %{e.RecursionPercent || "N/A"}</div>
                   <div className="dataPoint" >
                     { (()=>{
-                        if(e.Twittler){
+                        if(Boolean(Number(e.Twittler))){
                           return "Twittler: ✅"
                         }
                         else{
