@@ -47,11 +47,11 @@ testKoans() {
 
 }
 
-CLASSLISTGET="curl http://localhost:3000/api/classlist"
+CLASSLISTGET="curl http://35.173.188.239:3000/api/classlist"
 echo $CLASSLISTGET
 CLASSLIST=`$CLASSLISTGET`
 for i in $CLASSLIST; do
-  STUDENTLISTGET="curl http://localhost:3000/api/bashclassnames?c=$i"
+  STUDENTLISTGET="curl http://35.173.188.239:3000/api/bashclassnames?c=$i"
        echo $STUDENTLISTGET
        STUDENTLIST=`$STUDENTLISTGET`
   for j in $STUDENTLIST; do

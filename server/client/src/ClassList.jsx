@@ -16,7 +16,7 @@ class ClassList extends Component {
     };
   }
   componentDidMount() {
-    axios.get("http://localhost:3000/api/classlist")
+    axios.get("http://35.173.188.239:3000/api/classlist")
     .then(res => {
 
       const classes = res.data.split(" ").sort()

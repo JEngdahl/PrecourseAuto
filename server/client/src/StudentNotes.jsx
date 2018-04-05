@@ -26,7 +26,7 @@ class StudentNotes extends Component {
     this.setState({
       [name]: value
     });
-    axios.post("http://localhost:3000/api/updateone", {
+    axios.post("http://35.173.188.239:3000/api/updateone", {
         repo: "Twittler",
         score: value,
         github: this.props.student.GithubName
