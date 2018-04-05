@@ -31,7 +31,7 @@ testTestbuilder() {
   cat "$1/detectNetwork.js" >> "$1/test.js"
   cat "./graders/testbuilderTest.js" >> "$1/test.js"
   cat "$1/detectNetwork.test.js" >> "$1/test.js"
-  mocha "$1/test.js" -R postingMochaReporter.js $2 testbuilder
+  mocha "$1/test.js" -R postingMochaReporter.js $2 Testbuilder
 }
 
 testKoans() {
