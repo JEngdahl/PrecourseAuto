@@ -21,14 +21,15 @@ class StudentNotes extends Component {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
-    this.props.student.UnderbarTwo = value;
+    console.log(value)
+    this.props.student.Twittler = value;
     this.setState({
       [name]: value
     });
     axios.post("http://35.173.188.239:3000/api/updateone", {
-        field: "UnderbarTwo",
-        value: value,
-        id: this.props.student.id
+        repo: "Twittler",
+        score: value,
+        github: this.props.student.GithubName
       })
       .then(function (response) {
         console.log(response);
@@ -50,11 +51,11 @@ class StudentNotes extends Component {
       <div className="notesWrapper">
         <form>
           <label>
-            Twittler Complete : 
+            Twittler Complete :
             <input
-            name="UnderbarTwo"
+            name="Twittler"
             type="checkbox"
-            checked={!!this.props.student.UnderbarTwo}
+            checked={Boolean(Number(this.props.student.Twittler))}
             onChange={this.handleInputChange} />
           </label>
         </form>

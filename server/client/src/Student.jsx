@@ -10,20 +10,23 @@ var chart = {
       11,
       16,
       7,
-      3
+      3,
+      7
     ],
     backgroundColor: [
       '#DE7C00',
       '#861F41',
       '#DC4405',
-      '#00B398'
+      '#00B398',
+      '#522555'
     ],
     label: '' // for legend
   }],
   labels: [
     'Koans',
     'Testbuilder',
-    'Underbar',
+    'Underbar One',
+    'Underbar Two',
     'Recursion'
   ],
   // options: {
@@ -48,13 +51,12 @@ class Student extends Component {
     axios.get("http://35.173.188.239:3000/api/student?s="+p[3])
     .then(res => {
       var student = res.data[0];
-      this.setState({student});
       var chartData = {...this.state.chartData};
-      chartData.datasets["0"].data = [res.data[0].KoansPercent,res.data[0].TestbuilderPercent,res.data[0].UnderbarPercent,res.data[0].RecursionPercent];
+      chartData.datasets["0"].data = [res.data[0].KoansPercent||0,res.data[0].TestbuilderPercent||0,res.data[0].UnderbarOnePercent||0,res.data[0].UnderbarTwoPercent||0,res.data[0].RecursionPercent||0];
       chartData.datasets["0"].label = res.data[0].FullName;
-      this.setState({chartData})
+      this.setState({chartData, student})
        console.log(this.state)
-      // console.log(chartData)
+       console.log("cd",chartData)
     })
   }
 

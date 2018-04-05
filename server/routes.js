@@ -43,14 +43,23 @@ module.exports = function(app,db,compare) {
       }
       res.send(resp.map(function(el){
 
-        el.KoansPercent = Math.round(convertToPercentage(27,el.Koans))
-        el.UnderbarPercent = Math.round(convertToPercentage(71,el.UnderbarOne-57))
+        el.KoansPercent = Math.round(convertToPercentage(54,el.Koans))
+
+        el.UnderbarOnePercent = Math.round(convertToPercentage(59,el.UnderbarOne))
+        el.UnderbarTwoPercent = Math.round(convertToPercentage(62,el.UnderbarTwo))
         el.RecursionPercent = Math.round(convertToPercentage(2,el.Recursion))
+        if(el.RecursionPercent > 100){
+          el.RecursionPercent = 100;
+        }
+
         if(el.Testbuilder > 3299){
           el.TestbuilderPercent = 100;
         } else {
           el.TestbuilderPercent = Math.round(convertToPercentage(3299,el.Testbuilder))
         }
+
+        el.Overall = ((el.KoansPercent || 0) + (el.UnderbarOnePercent || 0) + (el.UnderbarTwoPercent || 0) + (el.TestbuilderPercent || 0) + (el.RecursionPercent || 0)) / 5
+
         return el
       }));
     })
@@ -72,15 +81,11 @@ module.exports = function(app,db,compare) {
         }
         if(resp.length){
           res.send(resp.map(function(el){
-            el.KoansPercent = Math.round(convertToPercentage(27,el.Koans))
+            el.KoansPercent = Math.round(convertToPercentage(54,el.Koans))
 
-            el.UnderbarPercent = Math.round(convertToPercentage(71,el.UnderbarOne-57))
-            if(el.UnderbarPercent < 0){
-              el.UnderbarPercent = 0;
-            }
-
+            el.UnderbarOnePercent = Math.round(convertToPercentage(59,el.UnderbarOne))
+            el.UnderbarTwoPercent = Math.round(convertToPercentage(62,el.UnderbarTwo))
             el.RecursionPercent = Math.round(convertToPercentage(2,el.Recursion))
-
             if(el.RecursionPercent > 100){
               el.RecursionPercent = 100;
             }
@@ -91,7 +96,7 @@ module.exports = function(app,db,compare) {
               el.TestbuilderPercent = Math.round(convertToPercentage(3299,el.Testbuilder))
             }
 
-            el.Overall = ((el.KoansPercent || 0) + (el.RecursionPercent || 0) + (el.TestbuilderPercent || 0) + (el.RecursionPercent || 0)) / 4
+            el.Overall = ((el.KoansPercent || 0) + (el.UnderbarOnePercent || 0) + (el.UnderbarTwoPercent || 0) + (el.TestbuilderPercent || 0) + (el.RecursionPercent || 0)) / 5
 
             return el
           }));
@@ -113,7 +118,8 @@ module.exports = function(app,db,compare) {
         if(resp.length){
           res.send(resp.map(function(el){
             el.KoansPercent = Math.round(convertToPercentage(27,el.Koans))
-            el.UnderbarPercent = Math.round(convertToPercentage(71,el.UnderbarOne-57))
+            el.UnderbarOnePercent = Math.round(convertToPercentage(62,el.UnderbarOne))
+            el.UnderbarTwoPercent = Math.round(convertToPercentage(58,el.UnderbarTwo))
             el.RecursionPercent = Math.round(convertToPercentage(2,el.Recursion))
             if(el.Testbuilder > 3299){
               el.TestbuilderPercent = 100;
@@ -127,6 +133,16 @@ module.exports = function(app,db,compare) {
         }
       })
     }
+  })
+
+  app.get('/api/csvlist',function(req, res){
+    db.query("SELECT * FROM precourse.Students;", function(err, resp){
+      if(err){
+        console.log(err)
+      }
+      let keys = Object.keys(resp[0])
+
+    })
   })
 
   app.get('/api/classlist', function(req, res){
