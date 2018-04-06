@@ -41,6 +41,7 @@ testKoans() {
   cat "./graders/koansTest.js" >> "$1/koans/test/test.js"
   for filename in $1/koans/*.js; do
     cat "$filename" >> "$1/koans/test/test.js"
+    echo "" >> "$1/koans/test/test.js"
   done
   jasmine "$1/koans/test/test.js" $2 Koans
 
@@ -83,4 +84,7 @@ for i in $CLASSLIST; do
 done
 
 
-echo $(date) >> runtimes.txt
+echo $(datt
+
+
+) >> runtimes.txt
