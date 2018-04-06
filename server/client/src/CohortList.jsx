@@ -5,6 +5,7 @@ import {
   HashRouter,
   Route
 } from "react-router-dom";
+import ExportCSV from "./ExportCSV.jsx"
 
 class ClassList extends Component {
   constructor(props) {
@@ -29,9 +30,12 @@ class ClassList extends Component {
       <div >
         <ul className="cohortList">
           {this.state.cohorts.map(e =>
-              <NavLink to={this.props.location.pathname+"/"+e}>
-                <li className="cohort">{e}</li>
-              </NavLink>
+              <li className="cohort">
+                <NavLink to={this.props.location.pathname+"/"+e}>
+                  {e}
+                </NavLink>
+                <ExportCSV class={e} />
+              </li>
             )}
         </ul>
       </div>
