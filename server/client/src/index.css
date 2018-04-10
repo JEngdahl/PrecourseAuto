@@ -35,10 +35,11 @@ body {
   flex-wrap: wrap;
 }
 .cohort{
+  padding-top: 42px;
   text-align: center;
   font-size: 34px;
   font-weight: 500;
-  line-height: 150px;
+  line-height: 45px;
   margin: 20px;
   width: 250px;
   height: 150px;
@@ -96,4 +97,7 @@ body {
 .left{
   font-size: 15px;
   float: left;
+}
+.exportLink {
+  font-size: 15px;
 }

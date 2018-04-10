@@ -1,3 +1,4 @@
+var csv = require('csv-express')
 module.exports = function(app,db,compare) {
 
 
@@ -136,12 +137,18 @@ module.exports = function(app,db,compare) {
   })
 
   app.get('/api/csvlist',function(req, res){
-    db.query("SELECT * FROM precourse.Students;", function(err, resp){
+    console.log(req.query.c)
+    const Class = req.query.c;
+    db.query("SELECT * FROM precourse.Students WHERE Class='"+Class+"';", function(err, resp){
       if(err){
         console.log(err)
+        res.send("nope")
       }
       let keys = Object.keys(resp[0])
-
+      //let csvHead = [[keys.join(",")]];
+      // resp.forEach(e => csv.push([Object.values(e).join(",")]))
+      //res.send(resp)
+      res.csv(resp, true);
     })
   })
 
