@@ -35,7 +35,7 @@ module.exports = function(app,db,compare) {
 
   app.delete('/api/cohorts', function(req, res){
     console.log(req.query.c)
-    db.query("Delete DISTINCT Class From precourse.Students WHERE class LIKE '"+req.query.c+"';",function(err,resp){
+    db.query("Delete Class From precourse.Students WHERE class ='"+req.query.c+"';",function(err,resp){
       if(err){
         res.send(err)
       } else {
