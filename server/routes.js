@@ -136,6 +136,16 @@ module.exports = function(app,db,compare) {
     }
   })
 
+  app.delete('/api/class', function(req, res){
+    console.log(req.query.c)
+    db.query("Delete From precourse.Students WHERE class='"+req.query.c+"';",function(err,resp){
+      if(err){
+        res.send(err)
+      } else {
+        res.send(200)  
+      }
+  });
+
   app.get('/api/csvlist',function(req, res){
     console.log(req.query.c)
     const Class = req.query.c;
