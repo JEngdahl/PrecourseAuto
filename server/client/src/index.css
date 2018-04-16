@@ -1,7 +1,8 @@
 body {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   font-family: sans-serif;
+  
 }
 .navText {
   line-height: 65px;
@@ -11,7 +12,8 @@ body {
 }
 .navLink {
   color: black;
-  font-size: 2.5em;
+  font-size: 2.2em;
+  margin: 0.5em;
 }
 .navBar {
   border: 1px solid grey;
@@ -104,4 +106,66 @@ body {
 }
 .exportLink {
   font-size: 15px;
+}
+
+
+.addCohort{
+  font: Arial, Helvetica, sans-serif;
+  width: 60em;
+  margin-top: 5%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 16px;
+  background: #F7F7F7;
+  box-sizing: border-box;
+
+}
+
+.addCohort h2 {
+  font: Arial, Helvetica, sans-serif;
+  font-size: 2em;
+}
+
+textarea {
+  height: 20em;
+}
+
+input[type='input'], select, textarea {
+  width: 55em;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type='submit'] {
+    color: white;
+    background: #0090d9;
+    border-color: #0090d9;
+    text-decoration: none;
+    padding: 9px 24px;
+    line-height: 16px;
+    font-weight: 600;
+    text-align: center;
+    position: relative;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #fff;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 21px;
+    line-height: 1.3125rem;
+    display: -moz-inline-stack;
+    display: inline-block;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+
 }

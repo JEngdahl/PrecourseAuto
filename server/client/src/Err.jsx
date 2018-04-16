@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 
 class Err extends Component {
+  
   render(){
+    console.log('kikiskfdksdfafsda');
     return (
-      <div>¯\_(ツ)_/¯</div>
+      <div><h1>¯\_(ツ)_/¯</h1></div>
+      
     )
   }
 }

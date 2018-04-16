@@ -3,7 +3,8 @@ import axios from 'axios';
 import {
   NavLink,
   HashRouter,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 import ExportCSV from "./ExportCSV.jsx"
 
@@ -12,7 +13,8 @@ class ClassList extends Component {
     super(props);
 
     this.state = {
-      cohorts: []
+      cohorts: [],
+      redirect : false 
     };
   }
 
@@ -20,12 +22,23 @@ class ClassList extends Component {
     var p = this.props.location.pathname
     axios.get("http://35.173.188.239:3000/api/cohorts?c="+p.slice(1,p.length))
     .then(res => {
+      if (res.data.length < 1 ) {
+        this.setState({redirect : true});
+      }
       var cohorts = res.data
       this.setState({cohorts})
-    })
+    }).catch(err => {
+      this.setState({redirect : true});
+    })  
   }
 
   render(){
+    const { redirect } = this.state;
+
+    if (redirect) {
+      return <Redirect to='/404'/>;
+    }
+
     return (
       <div >
         <ul className="cohortList">

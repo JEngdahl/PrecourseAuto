@@ -49,8 +49,9 @@ class Nav extends Component {
 
             <div className="navBar">
                 
-                <img height="65" src="https://static1.squarespace.com/static/ta/522a22cbe4b04681b0bff826/3066/assets/legacy-img/brandguide/logo/hack-reactor-logo-gray-blue.png" /> 
-                
+                <Link to="/">
+                    <img height="65" src="https://static1.squarespace.com/static/ta/522a22cbe4b04681b0bff826/3066/assets/legacy-img/brandguide/logo/hack-reactor-logo-gray-blue.png" /> 
+                </Link>
                 {
                     renderLinks(this.props.location)
 
