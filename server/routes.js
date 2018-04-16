@@ -144,6 +144,7 @@ module.exports = function(app,db,compare) {
       } else {
         res.send(200)  
       }
+    });
   });
 
   app.get('/api/csvlist',function(req, res){
