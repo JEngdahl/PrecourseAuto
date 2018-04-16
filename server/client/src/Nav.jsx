@@ -16,7 +16,7 @@ const renderLinks = (path) => {
     var links = path.slice(1).split('/');
     links = links.map((link, i, arr)=> {
         return {
-            text : link,
+            text : link[0].toUpperCase() + link.slice(1),
             href : assembleLink(i, arr),
         } 
     });
@@ -25,7 +25,8 @@ const renderLinks = (path) => {
         <span>
         {
             links.map((linkObj, i) =>
-           <Link to={linkObj.href} key={i}>{linkObj.text} </Link> )
+           <Link className='navLink' to={linkObj.href} key={i}>{linkObj.text} </Link> )
+           
         }
         </span>
 
@@ -42,12 +43,15 @@ class Nav extends Component {
 
             <div className="navBar">
                 
-                <img height="65" src="https://static1.squarespace.com/static/ta/522a22cbe4b04681b0bff826/3066/assets/legacy-img/brandguide/logo/hack-reactor-logo-gray-blue.png" />
+                <img height="65" src="https://static1.squarespace.com/static/ta/522a22cbe4b04681b0bff826/3066/assets/legacy-img/brandguide/logo/hack-reactor-logo-gray-blue.png" /> 
+                
                 {
                     renderLinks(this.props.location.pathname)
 
                 }
-                <div className="navText">Student Insights</div>
+                <div className="navText">Student Insights</div>    
+
+               
             </div>
         );
     }
