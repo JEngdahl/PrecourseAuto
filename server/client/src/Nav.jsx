@@ -12,14 +12,20 @@ const assembleLink = (givenIndex, array) => {
     return linkSrc;
 }
 
-const renderLinks = (path) => {
-    var links = path.slice(1).split('/');
-    links = links.map((link, i, arr)=> {
-        return {
-            text : link[0].toUpperCase() + link.slice(1),
-            href : assembleLink(i, arr),
-        } 
-    });
+const renderLinks = (location) => {
+    try {
+        var links = location.pathname.slice(1).split('/');
+        links = links.map((link, i, arr)=> {
+            return {
+                text : link[0].toUpperCase() + link.slice(1),
+                href : assembleLink(i, arr),
+            } 
+        });
+        
+    } catch(err) {
+        var links = [];
+    }
+
   
     return (
         <span>
@@ -46,7 +52,7 @@ class Nav extends Component {
                 <img height="65" src="https://static1.squarespace.com/static/ta/522a22cbe4b04681b0bff826/3066/assets/legacy-img/brandguide/logo/hack-reactor-logo-gray-blue.png" /> 
                 
                 {
-                    renderLinks(this.props.location.pathname)
+                    renderLinks(this.props.location)
 
                 }
                 <div className="navText">Student Insights</div>    
