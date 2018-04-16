@@ -23,6 +23,7 @@ class App extends Component {
         <BrowserRouter >
           <div>
             <Nav/>
+            <div className="main">
             <Switch>
               <Route exact path="/" component={ClassList}/>
               <Route exact path="/404" component={Err} />
@@ -32,6 +33,7 @@ class App extends Component {
               <Route exact path="/:campus/:cohort/:student" component={Student}/>
               <Redirect to="/404" /> 
             </Switch>
+            </div>
           </div>
         </BrowserRouter >
 
