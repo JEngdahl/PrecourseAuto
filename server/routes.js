@@ -33,6 +33,18 @@ module.exports = function(app,db,compare) {
     })
   })
 
+  app.delete('/api/cohorts', function(req, res){
+    console.log(req.query.c)
+    db.query("Delete Class From precourse.Students WHERE class ='"+req.query.c+"';",function(err,resp){
+      if(err){
+        res.send(err)
+      } else {
+        res.send(200)  
+      }
+    });
+  });
+
+
   app.get('/api/student', function(req, res){
     db.query("SELECT * FROM precourse.Students WHERE GithubName='"+req.query.s+"';",function(err,resp){
       console.log(resp)
@@ -135,6 +147,17 @@ module.exports = function(app,db,compare) {
       })
     }
   })
+
+  app.delete('/api/class', function(req, res){
+    console.log(req.query.c)
+    db.query("Delete From precourse.Students WHERE class='"+req.query.c+"';",function(err,resp){
+      if(err){
+        res.send(err)
+      } else {
+        res.send(200)  
+      }
+    });
+  });
 
   app.get('/api/csvlist',function(req, res){
     console.log(req.query.c)

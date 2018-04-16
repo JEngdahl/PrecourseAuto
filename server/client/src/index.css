@@ -1,13 +1,23 @@
 body {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   font-family: sans-serif;
+  
+}
+.main {
+  margin: auto;
+  width: 85%;
 }
 .navText {
   line-height: 65px;
   display: inline;
   float: right;
   margin-right: 4vw;
+}
+.navLink {
+  color: black;
+  font-size: 2.3em;
+  margin: 0.5em;
 }
 .navBar {
   border: 1px solid grey;
@@ -33,6 +43,24 @@ body {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
+}
+
+.deleteCohort{
+  float: right;
+  position: relative;
+  padding-left: 18px;
+  padding-right: 18px;
+  bottom: 40px;
+  right: 5px;
+  font-size: 12px;
+  border: 1px solid black;
+  border-radius: 25px;
+  color: red;
+}
+
+.deleteCohort:hover {
+  color: white;
+  background: red;
 }
 .cohort{
   padding-top: 42px;
@@ -100,4 +128,85 @@ body {
 }
 .exportLink {
   font-size: 15px;
+}
+
+.modal{
+  background-color: '#fff';
+  border-radius: 5;
+  max-width: 500;
+  min-Height: 300;
+  /* margin: '0 auto'; */
+  padding: 30;
+};
+
+.backdrop{
+    float:right;
+    height: 111100000px;
+    width: 1111000px;
+    background-color: gray;
+    background: blue;
+    color: red;
+
+}
+
+
+.addCohort{
+  font: Arial, Helvetica, sans-serif;
+  width: 60em;
+  margin-top: 5%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 16px;
+  background: #F7F7F7;
+  box-sizing: border-box;
+
+}
+
+.addCohort h2 {
+  font: Arial, Helvetica, sans-serif;
+  font-size: 2em;
+}
+
+textarea {
+  height: 20em;
+}
+
+input[type='input'], select, textarea {
+  width: 55em;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type='submit'] {
+    color: white;
+    background: #0090d9;
+    border-color: #0090d9;
+    text-decoration: none;
+    padding: 9px 24px;
+    line-height: 16px;
+    font-weight: 600;
+    text-align: center;
+    position: relative;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #fff;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 21px;
+    line-height: 1.3125rem;
+    display: -moz-inline-stack;
+    display: inline-block;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+
 }

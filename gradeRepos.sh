@@ -38,14 +38,17 @@ testKoans() {
   echo "in testKoans"
   echo $1
   mkdir "$1/koans/test"
-  cat "./graders/koansTest.js" >> "$1/koans/test/test.js"
-  for filename in $1/koans/*.js; do
-    cat "$filename" >> "$1/koans/test/test.js"
-    echo "" >> "$1/koans/test/test.js"
+  for filepath in $1/koans/*.js; do
+    filename=$(basename $filepath)
+    echo "Lol"
+    echo $filename
+    cat "./graders/koansTest.js" >> "$1/koans/test/test$filename"
+    cat "$filepath" >> "$1/koans/test/test$filename"
+    test="$1/koans/test/test${filename}"
+    echo $test
+    jasmine "$test" "-$1/koans/test" $2 Koans
   done
-  jasmine "$1/koans/test/test.js" $2 Koans
-
-
+  node ./sendData.js "$1/koans/test/score.txt" $2 Koans
 }
 
 CLASSLISTGET="curl http://35.173.188.239:3000/api/classlist"
@@ -84,7 +87,4 @@ for i in $CLASSLIST; do
 done
 
 
-echo $(datt
-
-
-) >> runtimes.txt
+echo $(date) >> runtimes.txt

@@ -46,33 +46,39 @@ class AddClass extends Component {
 
   render(){
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Names:
-          <textarea
-            name="names"
-            value={this.state.name}
-            onChange={this.handleInputChange} />
-        </label>
-        <br />
-        <label>
-          GH handles:
-          <textarea
-            name="handles"
-            value={this.state.handles}
-            onChange={this.handleInputChange} />
-        </label>
-        <br />
-        <label>
-          Cohort:
-          <input
-            name="cohort"
-            type="input"
-            value={this.state.cohort}
-            onChange={this.handleInputChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <div className="addCohort">
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            <h2>
+            Names:
+            </h2>
+            <textarea
+              name="names"
+              value={this.state.name}
+              onChange={this.handleInputChange} />
+          </label>
+          <label>
+            <h2>
+            GH handles:
+            </h2>
+            <textarea
+              name="handles"
+              value={this.state.handles}
+              onChange={this.handleInputChange} />
+          </label>
+          <label>
+            <h2>
+            Cohort:
+            </h2>
+            <input
+              name="cohort"
+              type="input"
+              value={this.state.cohort}
+              onChange={this.handleInputChange} />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
     )
   }
 }

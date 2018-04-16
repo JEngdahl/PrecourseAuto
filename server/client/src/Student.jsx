@@ -64,7 +64,7 @@ class Student extends Component {
     return (
       <div className="studentDashboard">
         <div className="chartContainer">
-          <div classname="spacer">
+          <div className="spacer">
             <Polar className="studentChart" width={500} height={360} data={this.state.chartData}/>
           </div>
           <div className="studentWorkWrapper">
