@@ -44,6 +44,24 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
+
+.deleteCohort{
+  float: right;
+  position: relative;
+  padding-left: 18px;
+  padding-right: 18px;
+  bottom: 40px;
+  right: 5px;
+  font-size: 12px;
+  border: 1px solid black;
+  border-radius: 25px;
+  color: red;
+}
+
+.deleteCohort:hover {
+  color: white;
+  background: red;
+}
 .cohort{
   padding-top: 42px;
   text-align: center;
@@ -110,6 +128,25 @@ body {
 }
 .exportLink {
   font-size: 15px;
+}
+
+.modal{
+  background-color: '#fff';
+  border-radius: 5;
+  max-width: 500;
+  min-Height: 300;
+  /* margin: '0 auto'; */
+  padding: 30;
+};
+
+.backdrop{
+    float:right;
+    height: 111100000px;
+    width: 1111000px;
+    background-color: gray;
+    background: blue;
+    color: red;
+
 }
 
 
