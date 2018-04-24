@@ -1,9 +1,7 @@
-const DEVELOPMENT = 'development';
-const PRODUCTION = 'production';
-process.NODE_ENV = process.NODE_ENV || DEVELOPMENT;
+const hostname = window && window.location && window.location.hostname;
 
 let BASE_URL;
-if (process.NODE_ENV === DEVELOPMENT) {
+if (hostname === 'localhost') {
   BASE_URL = 'http://localhost:3000';
 } else {
   BASE_URL = 'http://35.173.188.239:3000';
