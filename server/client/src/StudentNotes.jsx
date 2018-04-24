@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios"
+import axios from "axios";
+import BASE_URL from "./baseUrl";
 
 class StudentNotes extends Component {
   //this.props.student
@@ -26,7 +27,7 @@ class StudentNotes extends Component {
     this.setState({
       [name]: value
     });
-    axios.post("http://35.173.188.239:3000/api/updateone", {
+    axios.post(`${BASE_URL}/api/updateone`, {
         repo: "Twittler",
         score: value,
         github: this.props.student.GithubName
