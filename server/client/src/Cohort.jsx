@@ -49,7 +49,7 @@ class Cohort extends Component {
     var students = [...this.state.students];
     if(event.target.value === "alpha"){
       students = students.sort(function(a, b) {
-          return a.FullName - b.FullName;
+        return a.FullName < b.FullName ? -1 : 1;
       })
     }
     if(event.target.value === "percent"){
