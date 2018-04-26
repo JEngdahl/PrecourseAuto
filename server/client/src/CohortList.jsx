@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import ExportCSV from "./ExportCSV"
 import Modal from "./Modal"
+import BASE_URL from "./baseUrl";
 
 class ClassList extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class ClassList extends Component {
 
   componentDidMount() {
     var p = this.props.location.pathname
-    axios.get("http://35.173.188.239:3000/api/cohorts?c="+p.slice(1,p.length))
+    axios.get(`${BASE_URL}/api/cohorts?c=${p.slice(1,p.length)}`)
     .then(res => {
       if (res.data.length < 1 ) {
         this.setState({redirect : true});
@@ -36,7 +37,7 @@ class ClassList extends Component {
 
   deleteClass() {
     var p = this.props.location.pathname
-    axios.delete("http://35.173.188.239:3000/api/cohorts?c="+p.slice(1,p.length) + "/" + this.state.toDelete )
+    axios.delete(`${BASE_URL}/api/cohorts?c=${p.slice(1,p.length)}/${this.state.toDelete}` )
     .then(res => {
       console.log('deleted')
       window.location.reload(); 

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import { NavLink } from "react-router-dom";
+import BASE_URL from './baseUrl';
 
 function getGreenToRed(arr){
   let nonNull = arr.reduce(function(a,e){
@@ -65,7 +66,7 @@ class Cohort extends Component {
   componentDidMount(){
     var p = this.props.location.pathname
     p = p.split("/")
-    axios.get("http://35.173.188.239:3000/api/class?c="+p[2])
+    axios.get(`${BASE_URL}/api/class?c=${p[2]}`)
     .then(res => {
       var students = res.data
       this.setState({students})

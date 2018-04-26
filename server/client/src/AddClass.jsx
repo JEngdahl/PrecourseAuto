@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios"
+import BASE_URL from "./baseUrl";
 
 class AddClass extends Component {
 
@@ -18,7 +19,7 @@ class AddClass extends Component {
 
   addClass(){
     console.log("Firing the Missile")
-    axios.post('http://35.173.188.239:3000/api/addclass', {
+    axios.post(`${BASE_URL}/api/addclass`, {
     ...this.state
   })
   .then(function (response) {

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import {Polar} from 'react-chartjs-2';
-import StudentWork from "./StudentWork"
-import StudentNotes from "./StudentNotes"
+import StudentWork from "./StudentWork";
+import StudentNotes from "./StudentNotes";
+import BASE_URL from "./baseUrl";
 
 var chart = {
   datasets: [{
@@ -48,7 +49,7 @@ class Student extends Component {
   componentWillMount(){
     var p = this.props.location.pathname
     p = p.split("/")
-    axios.get("http://35.173.188.239:3000/api/student?s="+p[3])
+    axios.get(`${BASE_URL}/api/student?s=${p[3]}`)
     .then(res => {
       var student = res.data[0];
       var chartData = {...this.state.chartData};

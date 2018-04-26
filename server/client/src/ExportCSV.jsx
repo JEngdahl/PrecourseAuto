@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios"
+import axios from "axios";
+import BASE_URL from "./baseUrl";
 
 class ExportCSV extends Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class ExportCSV extends Component {
   render(){
     return (
       <div className="exportLink">
-        <a href={'http://35.173.188.239:3000/api/csvlist?c='+this.props.class} download={this.props.class}>Download</a>
+        <a href={`${BASE_URL}/api/csvlist?c=${this.props.class}`} download={this.props.class}>Download</a>
       </div>
     )
   }
