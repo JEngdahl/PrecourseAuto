@@ -13,6 +13,7 @@ class Home extends Component {
   render() {
     // calls the isAuthenticated method in authentication service
     const { isAuthenticated } = this.props.auth;
+    console.log('isAuthenticated', isAuthenticated)
     return (
       <div>
         {
@@ -27,7 +28,6 @@ class Home extends Component {
                 Log Out
               </a>.
             </h5>
-            <App />
           </div>
         }
         {
