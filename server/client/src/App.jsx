@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom";
 
+import ProtectedRoute from "./ProtectedRoute";
 import ClassList from "./ClassList";
 import CohortList from "./CohortList";
 import Cohort from "./Cohort";
@@ -26,9 +27,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <BrowserRouter history={history} component={Home}>
+        <BrowserRouter history={history} >
           <div>
-            <Nav />
+            <Nav auth={auth} />
             <div className="main">
               <Switch>
                 <Route
@@ -46,50 +47,40 @@ class App extends Component {
                   path="/callback"
                   render={props => {
                     handleAuthentication(props);
-                    return <ClassList {...props} />;
+                    return <Callback {...props}/>;
                   }}
                 />
-                <Route
+                <ProtectedRoute
                   exact
+                  auth={auth}
+                  path="/classlist"
+                  component={ClassList}
+                />
+                <ProtectedRoute
+                  exact
+                  auth={auth}
                   path="/add"
-                  render={props => {
-                    handleAuthentication(props);
-                    return <AddClass {...props} />;
-                  }}
+                  component={AddClass}
                 />
-                <Route
+                <ProtectedRoute
                   exact
+                  auth={auth}
                   path="/:campus"
-                  render={props => {
-                    handleAuthentication(props);
-                    return <CohortList {...props} />;
-                  }}
+                  component={CohortList}
                 />
-                <Route
+                <ProtectedRoute
                   exact
+                  auth={auth}
                   path="/:campus/:cohort"
-                  render={props => {
-                    handleAuthentication(props);
-                    return <Cohort {...props} />;
-                  }}
+                  render={Cohort }
                 />
-                <Route
+                <ProtectedRoute
                   exact
-                  path="/:campus/:cohort/:student"
-                  render={props => {
-                    handleAuthentication(props);
-                    return <Student {...props} />;
-                  }}
-                />
-                <Route exact path="/404" component={Err} />
-                {/* <Route exact path="/add" component={AddClass} /> */}
-                {/* <Route exact path="/:campus" component={CohortList} /> */}
-                {/* <Route exact path="/:campus/:cohort" component={Cohort} /> */}
-                {/* <Route
-                  exact
+                  auth={auth}
                   path="/:campus/:cohort/:student"
                   component={Student}
-                /> */}
+                /> 
+                <Route exact path="/404" component={Err} />
                 <Redirect to="/404" />
               </Switch>
             </div>
