@@ -86,7 +86,9 @@ class Cohort extends Component {
         </form>
 
         <ul className="studentRowContainer">
-          {filteredStudents.map(e =>
+          {
+            console.log('filteredStudents:', JSON.stringify(filteredStudents)) ||
+            filteredStudents.map(e =>
               <NavLink to={this.props.location.pathname+"/"+e.GithubName}>
                 <li className="studentRow" >
                   <div className="dataPoint indicator" style={{backgroundColor: getGreenToRed([e.RecursionPercent,e.TestbuilderPercent,e.KoansPercent,e.UnderbarOnePercent,e.UnderbarTwoPercent])[0]}}></div>
