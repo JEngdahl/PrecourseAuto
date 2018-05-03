@@ -11,32 +11,18 @@ const assembleLink = (givenIndex, array) => {
   return linkSrc;
 };
 
-const renderLinks = location => {
-  try {
-    var links = location.pathname.slice(1).split("/");
-    links = links.map((link, i, arr) => {
-      return {
-        text: link[0].toUpperCase() + link.slice(1),
-        href: assembleLink(i, arr)
-      };
-    });
-  } catch (err) {
-    links = [];
+class Nav extends Component {
+
+  login = () => {
+    this.props.auth.login();
   }
 
-  return (
-    <span>
-      {links.map((linkObj, i) => (
-        <Link className="navLink" to={linkObj.href} key={i}>
-          {linkObj.text}{" "}
-        </Link>
-      ))}
-    </span>
-  );
-};
+  logout = () => {
+    this.props.auth.logout();
+  }
 
-class Nav extends Component {
   render() {
+    const { isAuthenticated } = this.props.auth
     console.log("props", this.props);
     return (
       <div className="navBar">
@@ -47,8 +33,16 @@ class Nav extends Component {
             alt="Hack Reactor"
           />
         </Link>
-        {renderLinks(this.props.location)}
-        <div className="navText">Student Insights</div>
+        <div className="navText">{
+          isAuthenticated() ?
+          <a onClick={this.logout} style={{ cursor: 'pointer' }}>
+            Logout
+          </a> :
+          <a onClick={this.login} style={{ cursor: 'pointer' }}>
+            Login
+          </a> 
+        }
+        </div>
       </div>
     );
   }
