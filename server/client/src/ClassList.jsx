@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import BASE_URL from './baseUrl';
 import {
   NavLink,
   HashRouter,
@@ -16,7 +17,7 @@ class ClassList extends Component {
     };
   }
   componentDidMount() {
-    axios.get("http://35.173.188.239:3000/api/classlist")
+    axios.get(`${BASE_URL}/api/classlist`)
     .then(res => {
 
       const classes = res.data.split(" ").sort()
