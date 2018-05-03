@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 class Modal extends React.Component {
   render() {
@@ -7,7 +6,6 @@ class Modal extends React.Component {
     if(!this.props.show) {
       return null;
     } else {
-      console.log('lol whhherhwaheuieh')
     }
 
 
