@@ -1,11 +1,7 @@
 import React, { Component } from "react";
-import axios from "axios";
 import BASE_URL from "./baseUrl";
 
 class ExportCSV extends Component {
-  constructor(props) {
-    super(props);
-  }
   render(){
     return (
       <div className="exportLink">

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom";
+import { Route, Router, Switch, Redirect } from "react-router-dom";
 
 import ProtectedRoute from "./ProtectedRoute";
 import ClassList from "./ClassList";
@@ -27,7 +27,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <BrowserRouter history={history} >
+        <Router history={history} >
           <div>
             <Nav auth={auth} />
             <div className="main">
@@ -35,11 +35,6 @@ class App extends Component {
                 <Route
                   exact
                   path="/"
-                  render={props => <Home auth={auth} {...props} />}
-                />
-                <Route
-                  exact
-                  path="/home"
                   render={props => <Home auth={auth} {...props} />}
                 />
                 <Route
@@ -72,7 +67,7 @@ class App extends Component {
                   exact
                   auth={auth}
                   path="/:campus/:cohort"
-                  render={Cohort }
+                  component={Cohort}
                 />
                 <ProtectedRoute
                   exact
@@ -85,7 +80,7 @@ class App extends Component {
               </Switch>
             </div>
           </div>
-        </BrowserRouter>
+        </Router>
       </div>
     );
   }

@@ -3,8 +3,6 @@ import axios from 'axios';
 import BASE_URL from './baseUrl';
 import {
   NavLink,
-  HashRouter,
-  Route
 } from "react-router-dom";
 
 class ClassList extends Component {
