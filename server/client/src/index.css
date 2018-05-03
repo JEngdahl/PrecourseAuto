@@ -4,6 +4,9 @@ body {
   font-family: sans-serif;
   
 }
+.container {
+  display: grid;
+}
 .main {
   margin: auto;
   width: 85%;
@@ -103,6 +106,10 @@ body {
   box-shadow: -1px 10px 5px grey;
   height: 370px !important;
   width: 500px !important;
+}
+.home{
+  align-self: center;
+  justify-self: center;
 }
 .indicator{
   border-radius: 50%;

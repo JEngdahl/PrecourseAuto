@@ -39,11 +39,6 @@ class App extends Component {
                 />
                 <Route
                   exact
-                  path="/home"
-                  render={props => <Home auth={auth} {...props} />}
-                />
-                <Route
-                  exact
                   path="/callback"
                   render={props => {
                     handleAuthentication(props);
@@ -72,7 +67,7 @@ class App extends Component {
                   exact
                   auth={auth}
                   path="/:campus/:cohort"
-                  render={Cohort }
+                  component={Cohort}
                 />
                 <ProtectedRoute
                   exact
