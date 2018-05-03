@@ -2,15 +2,6 @@ import React, { Component } from "react";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 
-const assembleLink = (givenIndex, array) => {
-  let linkSrc = "";
-  for (let i = 0; i <= givenIndex; i++) {
-    linkSrc += "/" + array[i];
-  }
-
-  return linkSrc;
-};
-
 class Nav extends Component {
 
   login = () => {
